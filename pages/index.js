@@ -39,7 +39,8 @@ export default function Home() {
 			<main>
 				<section class="main-feature">
 					<p>The latest WordPress version is:</p>
-					<h1 className="version">{latestWP ? latestWP : "5.9.1"}</h1>
+					{/* <h1 className="version">{latestWP ? latestWP : "5.9.1"}</h1> */}
+					<h1 className="version">{latestWP}</h1>
 				</section>
 			</main>
 

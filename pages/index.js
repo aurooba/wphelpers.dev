@@ -55,8 +55,12 @@ export default function Home() {
 				<meta name="twitter:creator" content="@aurooba" key="twhandle" />
 
 				{/* Open Graph */}
-				<meta property="og:url" content="https://www.latestwp.is" key="ogurl" />
-				<meta property="og:image" content="/latestwpis.png" key="ogimage" />
+				<meta property="og:url" content="https://latestwp.is" key="ogurl" />
+				<meta
+					property="og:image"
+					content="https://latestwp.is/latestwpis.png"
+					key="ogimage"
+				/>
 				<meta
 					property="og:site_name"
 					content={`The latest WordPress version is ${latestWP}`}

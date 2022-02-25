@@ -1,5 +1,6 @@
 import "@styles/globals.scss";
 import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import * as Fathom from "fathom-client";
 
 function Application({ Component, pageProps }) {

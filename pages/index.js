@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "@components/Footer";
 
 export default function Home() {
-	const MINUTE_MS = 60000;
+	const DELAY = 600;
 	const [latestWP, setLatestWP] = useState("");
 
 	useEffect(() => {
@@ -23,7 +23,7 @@ export default function Home() {
 				.catch((error) => {
 					console.log("error: " + error);
 				});
-		}, MINUTE_MS);
+		}, DELAY);
 
 		return () => clearInterval(interval);
 	}, []);

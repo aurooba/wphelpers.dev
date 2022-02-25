@@ -10,19 +10,22 @@ import React, { useEffect, useState } from "react";
 import Footer from "@components/Footer";
 
 export default function Home() {
-	const DELAY = 600;
+	const DELAY = 60000;
 	const [latestWP, setLatestWP] = useState("");
-
+	function versionCheck() {
+		fetch("/.netlify/functions/wp")
+			.then(async (response) => response.json())
+			.then((response) => {
+				setLatestWP(response.version);
+			})
+			.catch((error) => {
+				console.log("error: " + error);
+			});
+	}
 	useEffect(() => {
+		versionCheck();
 		const interval = setInterval(() => {
-			fetch("/.netlify/functions/wp")
-				.then(async (response) => response.json())
-				.then((response) => {
-					setLatestWP(response.version);
-				})
-				.catch((error) => {
-					console.log("error: " + error);
-				});
+			versionCheck();
 		}, DELAY);
 
 		return () => clearInterval(interval);

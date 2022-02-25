@@ -3,7 +3,10 @@ export default function Footer() {
 		<>
 			<footer className="footer">
 				<p>
-					Built by <a href="https://aurooba.com">Aurooba</a>
+					Built by{" "}
+					<a href="https://aurooba.com" target="_blank" rel="noopener">
+						Aurooba
+					</a>
 				</p>
 			</footer>
 		</>

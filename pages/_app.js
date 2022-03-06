@@ -8,7 +8,7 @@ function Application({ Component, pageProps }) {
 
 	useEffect(() => {
 		Fathom.load("JALFHTEN", {
-			includedDomains: ["www.latestwp.is"],
+			includedDomains: ["latestwp.is"],
 		});
 
 		function onRouteChangeComplete() {

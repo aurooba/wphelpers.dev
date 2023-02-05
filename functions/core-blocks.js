@@ -20,7 +20,7 @@ function getName(path) {
 		const fileName = parts[parts.length - 1];
 		parts[parts.length - 1] = parse(fileName).name;
 	}
-	parts[0] = "wp-block-" + parts[0];
+	parts[0] = parts[0];
 	return parts;
 }
 /**

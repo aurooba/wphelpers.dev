@@ -6,7 +6,7 @@ const BUILD_HOOK = "https://api.netlify.com/build_hooks/abc123def456";
 
 // Schedules the handler function to run at midnight on
 // Mondays, Wednesday, and Friday
-const handler = schedule("0 0 * * 1,3,5", async () => {
+const handler = schedule("0 0 * * 1", async () => {
 	await fetch(BUILD_HOOK, {
 		method: "POST",
 	}).then((response) => {

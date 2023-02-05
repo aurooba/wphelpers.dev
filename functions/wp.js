@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
 const API_ENDPOINT = "http://api.wordpress.org/core/version-check/1.7/?";
 

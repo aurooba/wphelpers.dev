@@ -11,7 +11,5 @@
   to = '/.netlify/functions/:splat'
   status = 200
 
-
-
-  [functions."blocks"]
+  [functions."core-blocks"]
   included_files = ["node_modules/@wordpress/block-library/src/**"]

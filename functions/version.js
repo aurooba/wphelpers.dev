@@ -12,7 +12,10 @@ exports.handler = async () => {
 				"Access-Control-Allow-Origin": "*",
 			},
 			statusCode: 200,
-			body: JSON.stringify(data["offers"][0]["version"]),
+			body:
+				"<html><head><title>Core Blocks Object – WPHelpers</title><script id='fathom-script' async='' data-site='JALFHTEN' src='https://cdn.usefathom.com/script.js' data-included-domains='wphelpers.dev'></script></head><body><pre>" +
+				JSON.stringify(data["offers"][0]["version"]) +
+				"</pre></body></html>",
 		}))
 		.catch((error) => ({ statusCode: 422, body: String(error) }));
 	return response;

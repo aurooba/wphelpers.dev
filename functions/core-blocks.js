@@ -92,9 +92,6 @@ exports.handler = async function (event, context) {
 	// console.log(blockInfo);
 	return {
 		statusCode: 200,
-		body:
-			"<html><head><title>Core Blocks Object – WPHelpers</title><script id='fathom-script' async='' data-site='JALFHTEN' src='https://cdn.usefathom.com/script.js' data-included-domains='wphelpers.dev'></script></head><body><pre>" +
-			JSON.stringify(blockInfo) +
-			"</pre></body></html>",
+		body: JSON.stringify(blockInfo),
 	};
 };

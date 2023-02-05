@@ -91,6 +91,9 @@ exports.handler = async function (event, context) {
 	);
 	// console.log(blockInfo);
 	return {
+		headers: {
+			"Content-Type": "application/json",
+		},
 		statusCode: 200,
 		body: JSON.stringify(blockInfo),
 	};

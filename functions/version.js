@@ -9,9 +9,10 @@ exports.handler = async () => {
 		.then((response) => response.json())
 		.then((data) => ({
 			headers: {
-				"Access-Control-Allow-Origin": "*",
+				"Content-Type": "application/json",
 			},
 			statusCode: 200,
+			contentType: "application/json",
 			body: JSON.stringify(data["offers"][0]["version"]),
 		}))
 		.catch((error) => ({ statusCode: 422, body: String(error) }));

@@ -78,3 +78,10 @@ main {
 	align-items: center;
 	font-size: var(--step--5);
 }
+
+.smaller-paragraph {
+	font-size: var(--step--2);
+	max-width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+}

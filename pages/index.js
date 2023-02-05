@@ -10,10 +10,10 @@ import React, { useEffect, useState } from "react";
 import Footer from "@components/Footer";
 
 export default function Home() {
-	const DELAY = 60000;
+	const DELAY = 30000;
 	const [latestWP, setLatestWP] = useState("");
 	function versionCheck() {
-		fetch("/.netlify/functions/wp")
+		fetch("/api/wp")
 			.then(async (response) => response.json())
 			.then((response) => {
 				setLatestWP(response.version);
@@ -79,9 +79,17 @@ export default function Home() {
 			</Head>
 
 			<main>
-				<section class="main-feature">
+				<section className="main-feature">
 					<p>The latest WordPress version is:</p>
 					<h1 className="version">{latestWP}</h1>
+					<br />
+					<br />
+					<h2 className="smaller-paragraph">Core Blocks</h2>
+					<p className="smaller-paragraph">
+						Here's a little (but actually big){" "}
+						<a href="/api/core-blocks">JSON object of all the core blocks</a>{" "}
+						and their properties.
+					</p>
 				</section>
 			</main>
 

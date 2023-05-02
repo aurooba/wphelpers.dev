@@ -1,3 +1,5 @@
+
+
 :root {
 	--step--5: clamp(0.49rem, calc(0.54rem + -0.07vw), 0.53rem);
 	--step--4: clamp(0.63rem, calc(0.64rem + -0.04vw), 0.61rem);
@@ -56,7 +58,7 @@ main {
 }
 
 .container {
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--background);
@@ -85,3 +87,29 @@ main {
 	margin-right: auto;
 	margin-left: auto;
 }
+
+.visually-hidden:not(:focus):not(:active) {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.always-visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+@import "_icons";

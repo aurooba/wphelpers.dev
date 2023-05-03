@@ -17,7 +17,6 @@
     "sass": "^1.49.9"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.30.3",
     "@wordpress/block-library": "^8.3.0",
     "fs-extra": "^11.1.0",
     "glob": "^8.1.0",

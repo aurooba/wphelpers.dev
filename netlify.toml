@@ -3,9 +3,6 @@
   publish = ".next"
   functions = "functions"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
 [[redirects]]
   from = '/api/*'
   to = '/.netlify/functions/:splat'

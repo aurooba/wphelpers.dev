@@ -2,15 +2,13 @@
  * External Dependencies
  */
 import Head from "next/head";
-import React from "react";
 import { useRouter } from 'next/router';
-import Link from "next/link";
 
 /**
  * Internal Dependencies
  */
 import Footer from "@components/Footer";
-import IconCard from "@components/IconCard";
+import IconGrid from "@components/IconGrid";
 
 
 
@@ -18,7 +16,7 @@ import IconCard from "@components/IconCard";
 export default function Icons() {
 
 	const router = useRouter()
-	const { icon } = router.query
+	const { icon } = router.query;
 
 	return(
 		<div className="container">
@@ -69,14 +67,7 @@ export default function Icons() {
 			</Head>
 
 			<main>
-				<header className="icons-header">
-					<h1>WordPress Icons Library.</h1>
-					<p>A searchable guide to the complete <a href="https://github.com/WordPress/gutenberg/tree/trunk/packages/icons" target="_blank">WordPress Icon Library</a> package from Gutenberg.</p>
-					<Link href="/icons"><a>← Back to all icons</a></Link>
-				</header>
-				<section className="icons-feature">
-					{ icon && <IconCard icon={icon} /> }
-				</section>
+				<IconGrid icon={icon} />
 			</main>
 
 			<Footer />

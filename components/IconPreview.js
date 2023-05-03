@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 
 export default function IconPreview({icon, name}) {
-	console.log(icon);
 
 	return (
 		<div className="icon-card">	

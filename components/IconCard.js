@@ -19,8 +19,9 @@ export default function IconCard({icon}) {
 
 	return (
 		<div className="icon-card">
-			
-			<h2>{icon} <icons.Icon icon={ icons[icon] } size={64} /></h2>
+			<icons.Icon icon={ icons[icon] } size={64} />
+
+			<h2>{icon}</h2>
 			
 			<button onClick={() => { handleCopyClick(importText)}}>
 				<span className="visually-hidden">Click to copy</span>

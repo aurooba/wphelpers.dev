@@ -1,14 +1,25 @@
 
 .icons-header{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	display: grid;
+	grid-template-areas: "title title" "preview description";
 	gap: 1rem;
 	max-width: 1080px;
 	margin:0 auto;
 	padding:1rem;
 	* {
 		margin: 0;
+	}
+	h1{
+		grid-area: title;
+	}
+	.icon-card{
+		grid-area: preview;
+	}
+	.icons-meta{
+		grid-area: description;
+		> * + * {
+			margin-top: 1rem;
+		}
 	}
 	input[type=text] {
 		width: 100%;
@@ -26,20 +37,14 @@
 	gap: 1rem;
 	max-width: 1080px;
 	margin:0 auto;
-
+	width: 100%;
 	padding:1rem;
 	@media screen and (min-width: 768px) {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 	@media screen and (min-width: 1080px) {
-		grid-template-columns: repeat(5, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
-}
-.icons-feature{
-	max-width: 1080px;
-	margin:0 auto;
-
-	padding:1rem;
 }
 
 .icon-card {
@@ -48,7 +53,8 @@
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
-	gap:0.5rem;
+	align-items: stretch;
+	gap:1rem;
 	border: 1px solid var(--light);
 	box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
 	// margin: 0 4%;
@@ -67,10 +73,7 @@
 	}
 	h2, span {
 		font-size: var(--step--4);
-		display:flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 0.5rem;
+		text-align: left;
 	}
 	pre {
 		font-size: var(--step--5);

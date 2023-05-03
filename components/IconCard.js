@@ -6,33 +6,37 @@ export default function IconCard({icon}) {
 
 	const [isCopied, setIsCopied] = useState(false);
 
-	const copyText = `import { Icon, ${icon} } from '@wordpress/icons';\n\n<Icon icon={${icon}} />`;
+	const importText = `import { Icon, ${icon} } from '@wordpress/icons';`;
+	const iconText = `<Icon icon={${icon}} />`;
 
-	async function handleCopyClick(copyText) {
+	console.log(icons[icon].props);
+
+	async function handleCopyClick(text) {
 		setIsCopied(true);
         setTimeout(() => {
           setIsCopied(false);
         }, 1500);
-		return await navigator.clipboard.writeText(copyText);
+		return await navigator.clipboard.writeText(text);
 	}
 
 	return (
 		<div className="icon-card">
-			<button onClick={() => { handleCopyClick(copyText)}}>
-				<icons.Icon icon={ icons[icon] } size={64} />
+			
+			<h2>{icon} <icons.Icon icon={ icons[icon] } size={64} /></h2>
+			
+			<button onClick={() => { handleCopyClick(importText)}}>
+				<span className="visually-hidden">Click to copy</span>
+				<pre>{importText}</pre>
 			</button>
-			<pre>{copyText}</pre>
-			<span>{icon}{" "} 
-				<button onClick={() => { handleCopyClick(copyText)}}>
-					{ isCopied ? (
-						<>
-							<icons.Icon icon={icons.check} size={16} />
-							<span className="visually-hidden">Click to copy</span>
-						</>
-					) : <icons.Icon icon={icons.copy} size={16} /> }
-					
-				</button>
-			</span>
+			<button onClick={() => { handleCopyClick(iconText)}}>
+				<span className="visually-hidden">Click to copy</span>
+				<pre>{iconText}</pre>
+			</button>
+			<button onClick={() => { handleCopyClick(icon)}}>
+				<span className="visually-hidden">Click to copy</span>
+				<pre>{icon}</pre>
+			</button>
+			{isCopied && <span className="copied">Copied!</span>}
 		</div>
 	)
 }

@@ -75,7 +75,7 @@ export default function Icons() {
 					<Link href="/icons"><a>← Back to all icons</a></Link>
 				</header>
 				<section className="icons-feature">
-					<IconCard icon={icon} />
+					{ icon && <IconCard icon={icon} /> }
 				</section>
 			</main>
 

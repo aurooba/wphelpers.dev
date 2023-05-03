@@ -9,8 +9,6 @@ export default function IconCard({icon}) {
 	const importText = `import { Icon, ${icon} } from '@wordpress/icons';`;
 	const iconText = `<Icon icon={${icon}} />`;
 
-	console.log(icons[icon].props);
-
 	async function handleCopyClick(text) {
 		setIsCopied(true);
         setTimeout(() => {

@@ -21,19 +21,22 @@ export default function IconCard({icon}) {
 		<div className="icon-card">
 			<icons.Icon icon={ icons[icon] } size={64} />
 
-			<h2>{icon}</h2>
+			<button onClick={() => { handleCopyClick(icon)}} className="no-border">
+				<span className="visually-hidden">Click to copy</span>
+				<h2>{icon}</h2>
+				<icons.Icon icon={ icons["copy"] } size={24}/> 
+			</button>
+			
 			
 			<button onClick={() => { handleCopyClick(importText)}}>
 				<span className="visually-hidden">Click to copy</span>
 				<pre>{importText}</pre>
+				<icons.Icon icon={ icons["copy"] } size={24}/>
 			</button>
 			<button onClick={() => { handleCopyClick(iconText)}}>
 				<span className="visually-hidden">Click to copy</span>
 				<pre>{iconText}</pre>
-			</button>
-			<button onClick={() => { handleCopyClick(icon)}}>
-				<span className="visually-hidden">Click to copy</span>
-				<pre>{icon}</pre>
+				<icons.Icon icon={ icons["copy"] } size={24}/>
 			</button>
 			{isCopied && <span className="copied">Copied!</span>}
 		</div>

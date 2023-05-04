@@ -13,6 +13,14 @@ import BlockReference from "@components/BlockReference";
 export default function Icons() {
 	const [blocksObject, setBlocksObject] = useState({});
 	const [search, setSearch] = useState("");
+	const [blocksFound, setBlocksFound] = useState(blocksObject.length);
+	useEffect(() => {
+		setBlocksFound(
+			Object.keys(blocksObject).filter((block) => {
+				return block.toLowerCase().includes(search.toLowerCase());
+			}).length,
+		);
+	}, [search, blocksObject]);
 	function handleSearch(event) {
 		setSearch(event.target.value);
 	}
@@ -26,6 +34,7 @@ export default function Icons() {
 				console.log("error: " + error);
 			});
 	}, []);
+
 	return (
 		<div className="">
 			<Head>
@@ -81,6 +90,11 @@ export default function Icons() {
 					value={search}
 					onChange={handleSearch}
 				/>
+				{"" !== search && (
+					<div className="blocks-found-quantity">
+						{blocksFound} blocks found.
+					</div>
+				)}
 				<div className="blocks-reference-grid">
 					{Object.keys(blocksObject)
 						.filter((block) => {

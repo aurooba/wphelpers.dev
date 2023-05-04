@@ -25,7 +25,7 @@ export default function BlockReference(blockObject) {
 	// recursive function to make objects and objects of objects into strings
 	const stringify = (value) => {
 		if (typeof value === "object" && value !== null) {
-			console.log(value);
+			// console.log(value);
 			return Object.keys(value).map((key) => {
 				return (
 					<p className="block-reference__property">

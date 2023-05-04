@@ -56,7 +56,7 @@ export default function Blocks() {
 	return (
 		<div className="blocks-reference-page">
 			<Head>
-				<title>WordPress Icons Library.</title>
+				<title>WordPress Core Blocks Referece</title>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta charSet="utf-8" />
@@ -118,7 +118,9 @@ export default function Blocks() {
 						</div>
 					)}
 				</div>
-
+				{blocksObject.length === 0 && (
+					<div className="loading-blocks">Loading blocks...</div>
+				)}
 				<div className="blocks-reference-grid">
 					{Object.keys(blocksObject)
 						.filter((block) => {

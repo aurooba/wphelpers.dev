@@ -1,16 +1,13 @@
 
 .icons-header{
 	display: grid;
-	grid-template-areas: "title" "preview" "description";
+	grid-template-areas: "description" "preview" ;
 	gap: 1rem;
 	max-width: 1080px;
 	margin:0 auto;
 	padding:1rem;
 	* {
 		margin: 0;
-	}
-	h1{
-		grid-area: title;
 	}
 	.icon-card{
 		grid-area: preview;
@@ -31,7 +28,7 @@
 		}
 	}
 	@media screen and (min-width: 768px) {
-		grid-template-areas: "title title" "preview description";
+		grid-template-areas: "preview description";
 	}
 }
 .icons-grid{

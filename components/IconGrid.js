@@ -14,13 +14,15 @@ export default function IconGrid({ icon="wordpress"}) {
 
 			<header className="icons-header">
 
-				{ icon && <IconCard icon={icon} /> }
 				<div className="icons-meta">
 					<h1>WordPress Icons Library.</h1>
 					<p>A searchable guide to the complete <a href="https://github.com/WordPress/gutenberg/tree/trunk/packages/icons" target="_blank">WordPress Icon Library</a> package from Gutenberg.</p>
 					
 					<input type="text" placeholder="Search" value={search} onChange={handleSearch} />
 				</div>
+
+				{ icon && <IconCard icon={icon} /> }
+
 			</header>
 			<section className="icons-grid">
 				{

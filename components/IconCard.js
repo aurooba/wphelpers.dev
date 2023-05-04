@@ -4,8 +4,6 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 export default function IconCard({icon}) {
 
-	console.log( icons[icon] );
-
 	const [isCopied, setIsCopied] = useState(false);
 
 	const importText = `import { Icon, ${icon} } from '@wordpress/icons';`;

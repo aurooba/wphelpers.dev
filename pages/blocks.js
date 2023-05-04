@@ -10,7 +10,7 @@ import React, { useState, useEffect } from "react";
 import Footer from "@components/Footer";
 import BlockReference from "@components/BlockReference";
 
-export default function Icons() {
+export default function Blocks() {
 	const [blocksObject, setBlocksObject] = useState({});
 	const [search, setSearch] = useState("");
 	const [blocksFound, setBlocksFound] = useState(blocksObject.length);
@@ -115,7 +115,12 @@ export default function Icons() {
 							return "" !== search ? filterBlocksBySearch(block) : true;
 						})
 						.map((block) => {
-							return <BlockReference block={blocksObject[block]["block"]} />;
+							return (
+								<BlockReference
+									key={"grid-item-" + block}
+									block={blocksObject[block]["block"]}
+								/>
+							);
 						})}
 				</div>
 			</main>

@@ -28,12 +28,14 @@ export default function BlockReference(blockObject) {
 			// console.log(value);
 			return Object.keys(value).map((key) => {
 				return (
-					<p className="block-reference__property">
+					<div
+						className="block-reference__property"
+						key={key + "-property-wrap"}>
 						<span className="block-reference__property-key">{key}:</span>
 						<span className="block-reference__property-value">
 							{stringify(value[key])}
 						</span>
-					</p>
+					</div>
 				);
 			});
 		} else {
@@ -42,7 +44,9 @@ export default function BlockReference(blockObject) {
 	};
 
 	return (
-		<div className={`block-reference-${block.name}`} key={block.name}>
+		<div
+			className={`block-reference-${block.name}`}
+			key={"block-reference-" + block.name}>
 			<div className="block-reference__icon">
 				{icon && <icons.Icon icon={icon} />}
 			</div>
@@ -55,14 +59,16 @@ export default function BlockReference(blockObject) {
 						// map over the properties object and display the key and value
 						Object.keys(properties).map((property) => {
 							return (
-								<p className="block-reference__property">
+								<div
+									className="block-reference__property"
+									key={property + "general-property-wrap"}>
 									<span className="block-reference__property-key">
 										{property}:
 									</span>
-									<span className="block-reference__property-value">
+									<div className="block-reference__property-value">
 										{stringify(properties[property])}
-									</span>
-								</p>
+									</div>
+								</div>
 							);
 						})
 					}

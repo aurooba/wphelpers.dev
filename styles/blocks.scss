@@ -1,0 +1,23 @@
+.blocks-reference-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-gap: 1rem;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 1rem;
+	[class^="block-reference-"] {
+		padding: 1rem;
+		border: 1px solid var(--light);
+		box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
+		word-wrap: break-word;
+		font-size: 18px;
+		// overflow-wrap: break-word;
+		.block-reference {
+			font-size: var(--step--3);
+			&__category {
+				font-size: var(--step--4);
+			}
+
+		}
+	}
+}

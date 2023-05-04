@@ -27,7 +27,7 @@ export default function Icons() {
 			});
 	}, []);
 	return (
-		<div className="container">
+		<div className="">
 			<Head>
 				<title>WordPress Icons Library.</title>
 				<link rel="icon" href="/favicon.ico" />
@@ -81,13 +81,15 @@ export default function Icons() {
 					value={search}
 					onChange={handleSearch}
 				/>
-				{Object.keys(blocksObject)
-					.filter((block) => {
-						return block.toLowerCase().includes(search.toLowerCase());
-					})
-					.map((block) => {
-						return <BlockReference block={blocksObject[block]["block"]} />;
-					})}
+				<div className="blocks-reference-grid">
+					{Object.keys(blocksObject)
+						.filter((block) => {
+							return block.toLowerCase().includes(search.toLowerCase());
+						})
+						.map((block) => {
+							return <BlockReference block={blocksObject[block]["block"]} />;
+						})}
+				</div>
 			</main>
 
 			<Footer />

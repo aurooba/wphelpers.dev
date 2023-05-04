@@ -12,6 +12,10 @@ import BlockReference from "@components/BlockReference";
 
 export default function Icons() {
 	const [blocksObject, setBlocksObject] = useState({});
+	const [search, setSearch] = useState("");
+	function handleSearch(event) {
+		setSearch(event.target.value);
+	}
 	useEffect(() => {
 		fetch("/api/core-blocks")
 			.then(async (response) => response.json())
@@ -71,12 +75,19 @@ export default function Icons() {
 			</Head>
 
 			<main>
-				{
-					// map over the blocksObject and pass the block to the BlockReference component
-					Object.keys(blocksObject).map((block) => {
-						return <BlockReference block={blocksObject[block]["block"]} />;
+				<input
+					type="text"
+					placeholder="Search"
+					value={search}
+					onChange={handleSearch}
+				/>
+				{Object.keys(blocksObject)
+					.filter((block) => {
+						return block.toLowerCase().includes(search.toLowerCase());
 					})
-				}
+					.map((block) => {
+						return <BlockReference block={blocksObject[block]["block"]} />;
+					})}
 			</main>
 
 			<Footer />

@@ -47,13 +47,20 @@ export default function BlockReference(blockObject) {
 		<div
 			className={`block-reference-${block.name}`}
 			key={"block-reference-" + block.name}>
-			<div className="block-reference__icon">
-				{icon && <icons.Icon icon={icon} />}
-			</div>
-			<div className="block-reference__content">
-				<p className="block-reference__category">{category}</p>
-				<h3 className="block-reference__title">{title}</h3>
+			<header>
+				<h3 className="block-reference__title">
+					{icon && <icons.Icon icon={icon} />}{" "}
+					<span className="visually-hidden">Title: </span> {title}
+				</h3>
+
+				<div className="block-reference__category">
+					<span className="visually-hidden">Category: </span>
+					<span>{category}</span>
+				</div>
 				<p className="block-reference__description">{description}</p>
+			</header>
+
+			{/* <div className="block-reference__content">
 				<div className="block-reference__properties">
 					{
 						// map over the properties object and display the key and value
@@ -73,7 +80,7 @@ export default function BlockReference(blockObject) {
 						})
 					}
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

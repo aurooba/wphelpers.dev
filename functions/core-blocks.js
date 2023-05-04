@@ -112,9 +112,9 @@ exports.handler = async function (event, context) {
 	for (const [key, value] of Object.entries(blockInfo)) {
 		const blockName = key;
 		// if the icon is not already set get the icon
-		if (!blockInfo[blockName].icon) {
+		if (!blockInfo[blockName].block.icon) {
 			const blockIcon = await getBlockIcon(blockName);
-			blockInfo[blockName].icon = blockIcon;
+			blockInfo[blockName].block.icon = blockIcon;
 		}
 		// console.log(blockIcon);
 	}

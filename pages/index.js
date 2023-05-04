@@ -90,6 +90,10 @@ export default function Home() {
 						<a href="/api/core-blocks">JSON object of all the core blocks</a>{" "}
 						and their properties.
 					</p>
+					<h2 className="smaller-paragraph">WordPress Icon Library</h2>
+					<p className="smaller-paragraph">
+						A searchable guide to the complete <a href="/icons">WordPress Icon Library</a> package from Gutenberg.
+					</p>
 				</section>
 			</main>
 

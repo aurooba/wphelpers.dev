@@ -7,6 +7,10 @@ export default function Footer() {
 					<a href="https://aurooba.com" target="_blank" rel="noopener">
 						Aurooba
 					</a>
+					{" "}and{" "}
+					<a href="https://www.briancoords.com" target="_blank" rel="noopener">
+						Brian
+					</a>
 				</p>
 			</footer>
 		</>

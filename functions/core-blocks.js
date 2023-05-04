@@ -84,12 +84,40 @@ async function getBlockInfo(root, options = {}) {
 	return result;
 }
 
+// function to get the block icon from the index.js file in the block folder of the given block
+async function getBlockIcon(blockName) {
+	const blockPath = `node_modules/@wordpress/block-library/src/${ blockName }/index.js`;
+	const blockFile = await asyncReadFile(blockPath);
+	const blockFileString = blockFile.toString();
+	const blockFileArray = blockFileString.split('\n');
+
+	// find the line that includes @wordpress/icons and get the icon name
+	const iconLine = blockFileArray.find((line) => line.includes('@wordpress/icons'));
+	// get first word after the opening curly brace in iconLine
+	const iconTerm = undefined !== iconLine ? iconLine.split('{ ')[1] : null;
+	// remove everything after the first space in iconTerm
+	const icon = null !== iconTerm ? iconTerm.split(' ')[0] : null;
+	// if the block is navigation link console log the iconLine
+
+	return icon;
+}
+
 exports.handler = async function (event, context) {
 	const blockInfo = await getBlockInfo(
 		"node_modules/@wordpress/block-library/src/",
 		{ exclude: "block/block.json" },
 	);
-	// console.log(blockInfo);
+
+	// iterate through the blockInfo object and add the block icon to the object from the index.js file in the block folder
+	for (const [key, value] of Object.entries(blockInfo)) {
+		const blockName = key;
+		// if the icon is not already set get the icon
+		if (!blockInfo[blockName].icon) {
+			const blockIcon = await getBlockIcon(blockName);
+			blockInfo[blockName].icon = blockIcon;
+		}
+		// console.log(blockIcon);
+	}
 	return {
 		headers: {
 			"Content-Type": "application/json",

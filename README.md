@@ -12,5 +12,5 @@ This is a quick little Next.js project using the Netlify Starter template. Overt
 
 ## Contributors
 
-Aurooba Ahmed
-Brian Coords
+- [Aurooba Ahmed](https://aurooba.com)
+- [Brian Coords](https://briancorrds.com)

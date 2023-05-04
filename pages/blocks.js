@@ -17,14 +17,18 @@ export default function Blocks() {
 
 	function filterBlocksBySearch(block) {
 		const keywords = blocksObject[block]["block"].keywords;
+		const category = blocksObject[block]["block"].category;
 		const keywordSearch =
 			"" !== search && Array.isArray(keywords)
 				? keywords.includes(search.toLowerCase())
 				: false;
+		const categorySearch =
+			"" !== search ? category.includes(search.toLowerCase()) : false;
 		const blockSearch = blocksObject[block]["block"].name
 			.toLowerCase()
 			.includes(search.toLowerCase());
-		let showBlock = blockSearch || keywordSearch ? true : false;
+		let showBlock =
+			blockSearch || keywordSearch || categorySearch ? true : false;
 		return showBlock;
 	}
 
@@ -50,7 +54,7 @@ export default function Blocks() {
 	}, []);
 
 	return (
-		<div className="">
+		<div className="blocks-reference-page">
 			<Head>
 				<title>WordPress Icons Library.</title>
 				<link rel="icon" href="/favicon.ico" />
@@ -98,17 +102,23 @@ export default function Blocks() {
 			</Head>
 
 			<main>
-				<input
-					type="text"
-					placeholder="Search"
-					value={search}
-					onChange={handleSearch}
-				/>
-				{"" !== search && (
-					<div className="blocks-found-quantity">
-						{blocksFound} blocks found.
-					</div>
-				)}
+				<div className="search-bar">
+					<input
+						type="text"
+						placeholder="Search by block name, keyword, or category."
+						value={search}
+						onChange={handleSearch}
+						className="search-input"
+					/>
+					{"" !== search && (
+						<div className="blocks-found-quantity">
+							{1 === blocksFound
+								? "1 block found."
+								: `${blocksFound} blocks found.`}
+						</div>
+					)}
+				</div>
+
 				<div className="blocks-reference-grid">
 					{Object.keys(blocksObject)
 						.filter((block) => {

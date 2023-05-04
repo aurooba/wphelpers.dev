@@ -14,10 +14,24 @@ export default function Icons() {
 	const [blocksObject, setBlocksObject] = useState({});
 	const [search, setSearch] = useState("");
 	const [blocksFound, setBlocksFound] = useState(blocksObject.length);
+
+	function filterBlocksBySearch(block) {
+		const keywords = blocksObject[block]["block"].keywords;
+		const keywordSearch =
+			"" !== search && Array.isArray(keywords)
+				? keywords.includes(search.toLowerCase())
+				: false;
+		const blockSearch = blocksObject[block]["block"].name
+			.toLowerCase()
+			.includes(search.toLowerCase());
+		let showBlock = blockSearch || keywordSearch ? true : false;
+		return showBlock;
+	}
+
 	useEffect(() => {
 		setBlocksFound(
 			Object.keys(blocksObject).filter((block) => {
-				return block.toLowerCase().includes(search.toLowerCase());
+				return "" !== search ? filterBlocksBySearch(block) : true;
 			}).length,
 		);
 	}, [search, blocksObject]);
@@ -98,7 +112,7 @@ export default function Icons() {
 				<div className="blocks-reference-grid">
 					{Object.keys(blocksObject)
 						.filter((block) => {
-							return block.toLowerCase().includes(search.toLowerCase());
+							return "" !== search ? filterBlocksBySearch(block) : true;
 						})
 						.map((block) => {
 							return <BlockReference block={blocksObject[block]["block"]} />;

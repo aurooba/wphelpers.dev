@@ -4,7 +4,13 @@
 
 This is a quick little Next.js project using the Netlify Starter template. Overtime, the hope is to grow this into a little developer library of helper information. 
 
-Currently: 
+## Available Helpers
 
 1. it tells you the latest WordPress version using [the publicly provided WordPress.org API](https://codex.wordpress.org/WordPress.org_API)
 2. provides a JSON object of every single core blocks and their properties.
+3. provides a searchable version of the complete WordPress icon library with copy-paste code to easily include it in your project
+
+## Contributors
+
+Aurooba Ahmed
+Brian Coords

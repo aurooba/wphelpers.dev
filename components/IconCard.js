@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import  * as icons from '@wordpress/icons';
-
+import { renderToStaticMarkup } from 'react-dom/server';
 
 export default function IconCard({icon}) {
+
+	console.log( icons[icon] );
 
 	const [isCopied, setIsCopied] = useState(false);
 
@@ -16,6 +18,7 @@ export default function IconCard({icon}) {
         }, 1500);
 		return await navigator.clipboard.writeText(text);
 	}
+
 
 	return (
 		<div className="icon-card">
@@ -38,6 +41,13 @@ export default function IconCard({icon}) {
 				<pre>{iconText}</pre>
 				<icons.Icon icon={ icons["copy"] } size={24}/>
 			</button>
+			<button onClick={() => { handleCopyClick(renderToStaticMarkup(icons[icon]))}}>
+				<span className="visually-hidden">Click to copy</span>
+				<pre>{renderToStaticMarkup(icons[icon])}</pre>
+				<icons.Icon icon={ icons["copy"] } size={24}/>
+			</button>
+			
+
 			{isCopied && <span className="copied">Copied!</span>}
 		</div>
 	)

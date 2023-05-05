@@ -1,9 +1,8 @@
 /**
  * External Dependencies
  */
-import Head from "next/head";
 import { useRouter } from 'next/router';
-
+import { NextSeo } from "next-seo";
 /**
  * Internal Dependencies
  */
@@ -18,59 +17,38 @@ export default function Icons() {
 	const router = useRouter()
 	const { icon } = router.query;
 
-	return(
-		<div className="container">
-			<Head>
-				<title>WordPress Icons Library.</title>
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta charSet="utf-8" />
-				<meta
-					name="description"
-					content="Displays the latest WordPress Icons Library package."></meta>
-				<meta
-					property="og:title"
-					content={`WordPress Icons Library.`}
-					key="ogtitle"
-				/>
-				<meta
-					property="og:description"
-					content="Displays the latest WordPress Icons Library package."
-					key="ogdesc"
-				/>
-				{/* Twitter */}
-				<meta name="twitter:card" content="summary_large_image" key="twcard" />
-				<meta name="twitter:creator" content="@aurooba" key="twhandle" />
+	return (
+		<>
+			<NextSeo
+				title={`${icon} – WordPress Icon Library`}
+				description="A searchable guide to the complete #WordPress icon library from Gutenberg."
+				openGraph={{
+					url: "https://wphelpers.dev/icons/" + icon,
+					title: icon + " – WordPress Icon Library",
+					description:
+						"A searchable guide to the complete #WordPress icon library from Gutenberg.",
+					images: [
+						{
+							url: "https://wphelpers.dev/og-image-icon-explorer.png",
+							width: 1200,
+							height: 675,
+							alt: "An image with the title and description of the website",
+							type: "image/png",
+						},
+					],
+					siteName: "wphelpers.dev",
+				}}
+				twitter={{
+					cardType: "summary_large_image",
+				}}
+			/>
+			<div className="container">
+				<main>
+					<IconGrid icon={icon} />
+				</main>
 
-				{/* Open Graph */}
-				<meta property="og:url" content="https://latestwp.is" key="ogurl" />
-				<meta
-					property="og:image"
-					content="https://latestwp.is/latestwpis.png"
-					key="ogimage"
-				/>
-				<meta
-					property="og:site_name"
-					content={`WordPress Icons Library.`}
-					key="ogsitename"
-				/>
-				<meta
-					property="og:title"
-					content={`WordPress Icons Library.`}
-					key="ogtitle"
-				/>
-				<meta
-					property="og:description"
-					content="Displays the latest WordPress Icons Library package."
-					key="ogdesc"
-				/>
-			</Head>
-
-			<main>
-				<IconGrid icon={icon} />
-			</main>
-
-			<Footer />
-		</div>
+				<Footer />
+			</div>
+		</>
 	);
 }

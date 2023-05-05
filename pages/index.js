@@ -1,8 +1,8 @@
 /**
  * External Dependencies
  */
-import Head from "next/head";
 import React, { useEffect, useState } from "react";
+import { NextSeo } from "next-seo";
 
 /**
  * Internal Dependencies
@@ -31,73 +31,55 @@ export default function Home() {
 		return () => clearInterval(interval);
 	}, []);
 	return (
-		<div className="container">
-			<Head>
-				<title>The latest WordPress version is {latestWP}</title>
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta charSet="utf-8" />
-				<meta
-					name="description"
-					content="Displays the latest WordPress version available."></meta>
-				<meta
-					property="og:title"
-					content={`The latest WordPress version is ${latestWP}`}
-					key="ogtitle"
-				/>
-				<meta
-					property="og:description"
-					content="Displays the latest WordPress version available."
-					key="ogdesc"
-				/>
-				{/* Twitter */}
-				<meta name="twitter:card" content="summary_large_image" key="twcard" />
-				<meta name="twitter:creator" content="@aurooba" key="twhandle" />
+		<>
+			<NextSeo
+				title="wphelpers.dev"
+				description="a collection of helpers and explorers for WordPress developers and designers."
+				openGraph={{
+					url: "https://wphelpers.dev",
+					title: "wphelpers.dev",
+					description:
+						"a collection of helpers and explorers for WordPress developers and designers.",
+					images: [
+						{
+							url: "https://wphelpers.dev/og-image.png",
+							width: 1200,
+							height: 675,
+							alt: "An image with the title and description of the website",
+							type: "image/png",
+						},
+					],
+					siteName: "wphelpers.dev",
+				}}
+				twitter={{
+					handle: "@aurooba",
+					cardType: "summary_large_image",
+				}}
+			/>
+			<div className="container">
+				<main>
+					<section className="main-feature">
+						<p>The latest WordPress version is:</p>
+						<h1 className="version">{latestWP}</h1>
+						<br />
+						<br />
+						<h2 className="smaller-paragraph">Core Blocks</h2>
+						<p className="smaller-paragraph">
+							Here's a little (but actually big){" "}
+							<a href="/api/core-blocks">JSON object of all the core blocks</a>{" "}
+							and their properties.
+						</p>
+						<h2 className="smaller-paragraph">WordPress Icon Library</h2>
+						<p className="smaller-paragraph">
+							A searchable guide to the complete{" "}
+							<a href="/icons">WordPress Icon Library</a> package from
+							Gutenberg.
+						</p>
+					</section>
+				</main>
 
-				{/* Open Graph */}
-				<meta property="og:url" content="https://latestwp.is" key="ogurl" />
-				<meta
-					property="og:image"
-					content="https://latestwp.is/latestwpis.png"
-					key="ogimage"
-				/>
-				<meta
-					property="og:site_name"
-					content={`The latest WordPress version is ${latestWP}`}
-					key="ogsitename"
-				/>
-				<meta
-					property="og:title"
-					content={`The latest WordPress version is ${latestWP}`}
-					key="ogtitle"
-				/>
-				<meta
-					property="og:description"
-					content="Displays the latest WordPress version available."
-					key="ogdesc"
-				/>
-			</Head>
-
-			<main>
-				<section className="main-feature">
-					<p>The latest WordPress version is:</p>
-					<h1 className="version">{latestWP}</h1>
-					<br />
-					<br />
-					<h2 className="smaller-paragraph">Core Blocks</h2>
-					<p className="smaller-paragraph">
-						Here's a little (but actually big){" "}
-						<a href="/api/core-blocks">JSON object of all the core blocks</a>{" "}
-						and their properties.
-					</p>
-					<h2 className="smaller-paragraph">WordPress Icon Library</h2>
-					<p className="smaller-paragraph">
-						A searchable guide to the complete <a href="/icons">WordPress Icon Library</a> package from Gutenberg.
-					</p>
-				</section>
-			</main>
-
-			<Footer />
-		</div>
+				<Footer />
+			</div>
+		</>
 	);
 }

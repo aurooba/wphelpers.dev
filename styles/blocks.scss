@@ -33,6 +33,9 @@
 					order: 3;
 					display: flex;
 					gap: 0.5rem;
+					svg {
+						flex-shrink: 0;
+					}
 				}
 			}
 		}
@@ -62,11 +65,11 @@
 			}
 		}
 		button {
-			padding: 0.5rem;
+			padding: 0.3rem;
 			background-color: var(--light);
 			border: 1px solid var(--light);
 			border-radius: 5px;
-			font-size: var(--step--3);
+			font-size: var(--step--4);
 			transition: 0.5s ease all;
 			// width: 100%;
 			&:hover {
@@ -77,6 +80,13 @@
 		&.block-reference--open {
 			background-color: var(--light);
 			grid-column: 1 / -1;
+			.block-reference {
+				&__category {
+					span {
+						background-color: #fff;
+					}
+				}
+			}
 		}
 	}
 }
@@ -95,6 +105,10 @@
 		padding: 0.75rem;
 		width: 100%;
 		font-size: var(--step--3);
+		&:-webkit-search-cancel-button {
+			display: none;
+			appearance: none;
+		}
 	}
 	.blocks-found-quantity {
 		font-size: var(--step--4);

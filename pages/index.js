@@ -63,17 +63,25 @@ export default function Home() {
 						<h1 className="version">{latestWP}</h1>
 						<br />
 						<br />
-						<h2 className="smaller-paragraph">Core Blocks</h2>
-						<p className="smaller-paragraph">
-							Here's a little (but actually big){" "}
-							<a href="/api/core-blocks">JSON object of all the core blocks</a>{" "}
-							and their properties.
-						</p>
 						<h2 className="smaller-paragraph">WordPress Icon Library</h2>
 						<p className="smaller-paragraph">
 							A searchable guide to the complete{" "}
 							<a href="/icons">WordPress Icon Library</a> package from
 							Gutenberg.
+						</p>
+
+						<h2 className="smaller-paragraph">
+							WordPress Core Blocks Explorer
+						</h2>
+						<p className="smaller-paragraph">
+							A searchable guide to all the{" "}
+							<a href="/blocks">WordPress Core Blocks</a> for the Block Editor
+							and their properties.
+						</p>
+						<p className="smaller-paragraph">
+							Or get a complete{" "}
+							<a href="/api/core-blocks">JSON object of all the core blocks</a>{" "}
+							and their properties instead.
 						</p>
 					</section>
 				</main>

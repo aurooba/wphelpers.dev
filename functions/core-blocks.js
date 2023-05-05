@@ -105,7 +105,7 @@ async function getBlockIcon(blockName) {
 exports.handler = async function (event, context) {
 	const blockInfo = await getBlockInfo(
 		"node_modules/@wordpress/block-library/src/",
-		{ exclude: "block/block.json" },
+		{ exclude: ["block/block.json", "missing/block.json"] },
 	);
 
 	// iterate through the blockInfo object and add the block icon to the object from the index.js file in the block folder

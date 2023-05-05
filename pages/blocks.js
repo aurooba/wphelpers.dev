@@ -99,7 +99,7 @@ export default function Blocks() {
 						</div>
 					)}
 				</div>
-				{blocksObject.length === 0 && (
+				{Object.keys(blocksObject).length === 0 && (
 					<div className="loading-blocks">Loading blocks...</div>
 				)}
 				<div className="blocks-reference-grid">

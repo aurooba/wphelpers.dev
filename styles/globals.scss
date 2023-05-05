@@ -56,7 +56,7 @@ main {
 }
 
 .container {
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--background);
@@ -86,7 +86,7 @@ main {
 	margin-left: auto;
 }
 
-.visually-hidden {
+.visually-hidden:not(:focus):not(:active) {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: auto;
@@ -98,4 +98,17 @@ main {
 	white-space: nowrap;
 }
 
-@import "./blocks.scss";
+.always-visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+@import "_icons";
+@import "blocks.scss";

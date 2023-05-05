@@ -1,9 +1,8 @@
 /**
  * External Dependencies
  */
-import Head from "next/head";
 import React, { useState, useEffect } from "react";
-
+import { NextSeo } from "next-seo";
 /**
  * Internal Dependencies
  */
@@ -55,53 +54,35 @@ export default function Blocks() {
 
 	return (
 		<div className="blocks-reference-page">
-			<Head>
-				<title>WordPress Core Blocks Referece</title>
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta charSet="utf-8" />
-				<meta
-					name="description"
-					content="WordPress Core Blocks and their information."></meta>
-				<meta
-					property="og:title"
-					content={`WordPress Core Blocks Reference.`}
-					key="ogtitle"
-				/>
-				<meta
-					property="og:description"
-					content="WordPress Core Blocks and their information."
-					key="ogdesc"
-				/>
-				{/* Twitter */}
-				<meta name="twitter:card" content="summary_large_image" key="twcard" />
-				<meta name="twitter:creator" content="@aurooba" key="twhandle" />
-
-				{/* Open Graph */}
-				<meta property="og:url" content="https://latestwp.is" key="ogurl" />
-				<meta
-					property="og:image"
-					content="https://latestwp.is/latestwpis.png"
-					key="ogimage"
-				/>
-				<meta
-					property="og:site_name"
-					content={`WordPress Core Blocks Reference.`}
-					key="ogsitename"
-				/>
-				<meta
-					property="og:title"
-					content={`WordPress Core Blocks Reference.`}
-					key="ogtitle"
-				/>
-				<meta
-					property="og:description"
-					content="WordPress Core Blocks and their information."
-					key="ogdesc"
-				/>
-			</Head>
+			<NextSeo
+				title="WordPress Core Blocks Explorer"
+				description="A searchable explorer to the all the WordPress core blocks and their properties."
+				openGraph={{
+					url: "https://wphelpers.dev/blocks",
+					title: "WordPress Core Blocks Explorer",
+					description:
+						"A searchable explorer to the all the WordPress core blocks and their properties.",
+					images: [
+						{
+							url: "https://wphelpers.dev/og-image-blocks-explorer.png",
+							width: 1200,
+							height: 675,
+							alt: "An image with the title and description of the website",
+							type: "image/png",
+						},
+					],
+					siteName: "wphelpers.dev",
+				}}
+				twitter={{
+					cardType: "summary_large_image",
+				}}
+			/>
 
 			<main>
+				<header className="blocks-header">
+					<h1>WordPress Core Blocks Explorer</h1>
+					<p>Explore all the WordPress core blocks and their properties.</p>
+				</header>
 				<div className="search-bar">
 					<input
 						type="text"

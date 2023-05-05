@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import * as icons from "@wordpress/icons";
 
@@ -22,27 +23,9 @@ export default function BlockReference(blockObject) {
 		}
 		return object;
 	}, {});
-
-	// recursive function to make objects and objects of objects into strings
-	const stringify = (value) => {
-		if (typeof value === "object" && value !== null) {
-			// console.log(value);
-			return Object.keys(value).map((key) => {
-				return (
-					<div
-						className="block-reference__property"
-						key={key + "-property-wrap"}>
-						<span className="block-reference__property-key">{key}:</span>
-						<span className="block-reference__property-value">
-							{stringify(value[key])}
-						</span>
-					</div>
-				);
-			});
-		} else {
-			return value;
-		}
-	};
+	const PropertyReference = dynamic(() => import("./JsonView.js"), {
+		ssr: false,
+	});
 
 	return (
 		<>
@@ -97,23 +80,7 @@ export default function BlockReference(blockObject) {
 					</header>
 					<div className="block-content">
 						<div className="block-reference__properties">
-							{
-								// map over the properties object and display the key and value
-								Object.keys(properties).map((property) => {
-									return (
-										<div
-											className="block-reference__property"
-											key={property + "general-property-wrap"}>
-											<span className="block-reference__property-key">
-												{property}:
-											</span>
-											<div className="block-reference__property-value">
-												{stringify(properties[property])}
-											</div>
-										</div>
-									);
-								})
-							}
+							{<PropertyReference data={properties} />}
 						</div>
 					</div>
 				</div>

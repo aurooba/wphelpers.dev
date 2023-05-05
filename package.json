@@ -10,8 +10,9 @@
   "dependencies": {
     "@netlify/functions": "^1.4.0",
     "@wordpress/icons": "^9.23.0",
+    "eslint-config-next": "^13.4.1",
     "fathom-client": "^3.5.0",
-    "next": "^12.3.4",
+    "next": "^13.4.1",
     "next-seo": "^6.0.0",
     "node-fetch": "^3.3.0",
     "react": "^18.2.0",

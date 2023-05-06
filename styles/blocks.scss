@@ -142,6 +142,7 @@
 		width: 100%;
 		font-size: var(--step--3);
 		transition: 0.2s ease all;
+		border: 1px solid var(--light);
 		outline: 1px auto var(--light);
 		&:-webkit-search-cancel-button {
 			display: none;

@@ -14,7 +14,7 @@
 		border: 1px solid var(--light);
 		box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
 		word-wrap: break-word;
-		font-size: 18px;
+		font-size: var(--step--3);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;

@@ -86,7 +86,7 @@ function getBlockInfo(root, options = {}) {
 // function to get the block icon from the index.js file in the block folder of the given block
 function getBlockIcon(blockName) {
 	const blockPath = `node_modules/@wordpress/block-library/src/${blockName}/index.js`;
-	const blockFile = readFile(blockPath);
+	const blockFile = readFileSync(blockPath);
 	const blockFileString = blockFile.toString();
 	const blockFileArray = blockFileString.split("\n");
 

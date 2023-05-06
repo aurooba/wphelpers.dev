@@ -8,13 +8,10 @@ import { NextSeo } from "next-seo";
  */
 import Footer from "@components/Footer";
 import IconGrid from "@components/IconGrid";
-
-
-
+import HomeLink from "@components/HomeLink";
 
 export default function Icons() {
-
-	const router = useRouter()
+	const router = useRouter();
 	const { icon } = router.query;
 
 	return (
@@ -44,6 +41,7 @@ export default function Icons() {
 			/>
 			<div className="container">
 				<main>
+					<HomeLink />
 					<IconGrid icon={icon} />
 				</main>
 

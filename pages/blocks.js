@@ -3,16 +3,19 @@
  */
 import React, { useState, useEffect } from "react";
 import { NextSeo } from "next-seo";
+
 /**
  * Internal Dependencies
  */
 import Footer from "@components/Footer";
-import BlockReference from "@components/BlockReference";
+import BlockCard from "@components/BlockCard";
+import HomeLink from "@components/HomeLink";
 
 export default function Blocks() {
 	const [blocksObject, setBlocksObject] = useState({});
 	const [search, setSearch] = useState("");
 	const [blocksFound, setBlocksFound] = useState(blocksObject.length);
+	const [showBlockProps, setShowBlockProps] = useState(false);
 
 	function filterBlocksBySearch(block) {
 		const keywords = blocksObject[block]["block"].keywords;
@@ -79,6 +82,7 @@ export default function Blocks() {
 			/>
 
 			<main>
+				<HomeLink />
 				<header className="blocks-header">
 					<h1>WordPress Core Blocks Explorer</h1>
 					<p>Explore all the WordPress core blocks and their properties.</p>
@@ -109,9 +113,12 @@ export default function Blocks() {
 						})
 						.map((block) => {
 							return (
-								<BlockReference
+								<BlockCard
 									key={"grid-item-" + block}
-									block={blocksObject[block]["block"]}
+									blockObject={blocksObject[block]["block"]}
+									showBlockProps={showBlockProps}
+									blockName={block}
+									setShowBlockProps={setShowBlockProps}
 								/>
 							);
 						})}

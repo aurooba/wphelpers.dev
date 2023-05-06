@@ -42,8 +42,12 @@ export default function BlockCard(props) {
 				<div className="button-wrapper">
 					<button
 						className="block-reference__toggle-properties"
-						onClick={() => setShowBlockProps(blockName)}>
-						{blockName === setShowBlockProps
+						onClick={() =>
+							setShowBlockProps(
+								blockName === showBlockProps ? false : blockName,
+							)
+						}>
+						{blockName === showBlockProps
 							? "Hide Properties"
 							: "Show Properties"}
 					</button>

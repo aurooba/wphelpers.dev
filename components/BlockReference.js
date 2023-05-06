@@ -3,6 +3,8 @@
  */
 import * as icons from "@wordpress/icons";
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+
 /**
  * Internal Dependencies
  */
@@ -16,6 +18,7 @@ export default function BlockReference(props) {
 		blockName,
 		setShowBlockProps,
 	} = props;
+	const router = useRouter();
 	const blockIcon = block.icon;
 	const icon = icons[blockIcon];
 	const title = block.title;
@@ -45,7 +48,7 @@ export default function BlockReference(props) {
 				block: "center",
 			});
 		}
-	}, [blockName === showBlockProps]);
+	}, [blockName === showBlockProps, router.query]);
 
 	return (
 		<>

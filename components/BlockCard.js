@@ -2,6 +2,7 @@
  * External dependencies
  */
 import * as icons from "@wordpress/icons";
+import { useRouter } from "next/router";
 
 /**
  * Internal dependencies
@@ -15,9 +16,9 @@ export default function BlockCard(props) {
 		blockName,
 		setShowBlockProps,
 	} = props;
+	const router = useRouter();
 	const blockIcon = block.icon;
 	const icon = icons[blockIcon];
-	const title = block.title;
 	const category = block.category;
 	const description = block.description;
 	const isExperimental = true === block["__experimental"];
@@ -52,11 +53,14 @@ export default function BlockCard(props) {
 				<div className="button-wrapper">
 					<button
 						className="block-reference__toggle-properties"
-						onClick={() =>
+						onClick={() => {
 							setShowBlockProps(
 								blockName === showBlockProps ? false : blockName,
-							)
-						}>
+							);
+							router.push(`/blocks/${encodeURIComponent(blockName)}`, "", {
+								scroll: false,
+							});
+						}}>
 						{blockName === showBlockProps
 							? "Hide Information"
 							: "Expand Information"}

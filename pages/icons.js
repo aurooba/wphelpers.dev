@@ -8,6 +8,7 @@ import { NextSeo } from "next-seo";
  */
 import Footer from "@components/Footer";
 import IconGrid from "@components/IconGrid";
+import HomeLink from "@components/HomeLink";
 
 export default function Icons() {
 	return (
@@ -37,6 +38,7 @@ export default function Icons() {
 			/>
 			<div className="container">
 				<main>
+					<HomeLink />
 					<IconGrid />
 				</main>
 

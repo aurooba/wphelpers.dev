@@ -40,15 +40,16 @@ export default function BlockReference(props) {
 	const PropertyReference = dynamic(() => import("./JsonView.js"), {
 		ssr: false,
 	});
-
 	useEffect(() => {
-		if (null !== scrollToRef.current) {
-			scrollToRef.current.scrollIntoView({
-				behavior: "smooth",
-				block: "center",
-			});
+		if (blockName === showBlockProps) {
+			if (null !== scrollToRef.current) {
+				scrollToRef.current.scrollIntoView({
+					behavior: "smooth",
+					block: "center",
+				});
+			}
 		}
-	}, [blockName === showBlockProps, router.query]);
+	}, [showBlockProps]);
 
 	return (
 		<>
@@ -63,7 +64,13 @@ export default function BlockReference(props) {
 				ref={scrollToRef}>
 				<header>
 					<div className="block-reference__close">
-						<button onClick={() => setShowBlockProps(false)}>
+						<button
+							onClick={() => {
+								setShowBlockProps(false);
+								router.push(`/blocks`, "", {
+									scroll: false,
+								});
+							}}>
 							<icons.Icon icon={icons.close} />
 						</button>
 					</div>

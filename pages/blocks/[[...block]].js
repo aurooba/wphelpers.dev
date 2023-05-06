@@ -3,6 +3,7 @@
  */
 import React, { useState, useEffect } from "react";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 
 /**
  * Internal Dependencies
@@ -12,11 +13,14 @@ import BlockCard from "@components/BlockCard";
 import HomeLink from "@components/HomeLink";
 
 export default function Blocks() {
+	const router = useRouter();
+	const { block: setBlock } = router.query;
 	const [blocksObject, setBlocksObject] = useState({});
 	const [search, setSearch] = useState("");
 	const [blocksFound, setBlocksFound] = useState(blocksObject.length);
-	const [showBlockProps, setShowBlockProps] = useState(false);
-
+	const [showBlockProps, setShowBlockProps] = useState(
+		undefined !== setBlock ? setBlock[0] : false,
+	);
 	function filterBlocksBySearch(block) {
 		const keywords = blocksObject[block]["block"].keywords;
 		const category = blocksObject[block]["block"].category;
@@ -33,6 +37,9 @@ export default function Blocks() {
 			blockSearch || keywordSearch || categorySearch ? true : false;
 		return showBlock;
 	}
+	useEffect(() => {
+		setShowBlockProps(undefined !== setBlock ? setBlock[0] : false);
+	}, [setBlock]);
 
 	useEffect(() => {
 		setBlocksFound(

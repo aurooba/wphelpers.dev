@@ -1,4 +1,4 @@
-const { readFile, writeFileSync } = require("fs-extra");
+const { readFile, writeFileSync, readFileSync } = require("fs-extra");
 const { join } = require("path");
 const { promisify } = require("util");
 const glob = require("glob");
@@ -29,8 +29,8 @@ function getName(path) {
  * @param {function} parser
  * @returns {string} parsed JSON
  */
-async function parseFile(filePath, parser = JSON.parse) {
-	const buff = await asyncReadFile(filePath);
+function parseFile(filePath, parser = JSON.parse) {
+	const buff = readFileSync(filePath);
 	const text = buff.toString();
 	try {
 		return parser(text);
@@ -47,9 +47,9 @@ async function parseFile(filePath, parser = JSON.parse) {
  * @param {function} parser
  * @returns {object} result
  */
-async function handleFile(result, root, filePath, parser) {
+function handleFile(result, root, filePath, parser) {
 	const fullPath = join(root, filePath);
-	const what = await parseFile(fullPath, parser);
+	const what = parseFile(fullPath, parser);
 	const where = getName(filePath);
 	set(result, where, what);
 	return result;
@@ -61,12 +61,12 @@ async function handleFile(result, root, filePath, parser) {
  * @param {string} options - options for the glob search
  * @returns
  */
-async function getBlockInfo(root, options = {}) {
+function getBlockInfo(root, options = {}) {
 	// get the options, set defaults
 	const { parser, include = "*.json", exclude } = options;
 
 	// get the files
-	const matches = await asyncGlob(include, {
+	const matches = glob.sync(include, {
 		// glob options: https://www.npmjs.com/package/glob#options
 		ignore: exclude,
 		cwd: root,
@@ -77,43 +77,43 @@ async function getBlockInfo(root, options = {}) {
 	});
 	// process the files
 	const result = {};
-	await asyncMap(matches, (filePath) =>
-		handleFile(result, root, filePath, parser),
-	);
+	// asyncMap(matches, (filePath) => handleFile(result, root, filePath, parser));
+	matches.map((filePath) => handleFile(result, root, filePath, parser));
 
 	return result;
 }
 
 // function to get the block icon from the index.js file in the block folder of the given block
-async function getBlockIcon(blockName) {
-	const blockPath = `node_modules/@wordpress/block-library/src/${ blockName }/index.js`;
-	const blockFile = await asyncReadFile(blockPath);
+function getBlockIcon(blockName) {
+	const blockPath = `node_modules/@wordpress/block-library/src/${blockName}/index.js`;
+	const blockFile = readFile(blockPath);
 	const blockFileString = blockFile.toString();
-	const blockFileArray = blockFileString.split('\n');
+	const blockFileArray = blockFileString.split("\n");
 
 	// find the line that includes @wordpress/icons and get the icon name
-	const iconLine = blockFileArray.find((line) => line.includes('@wordpress/icons'));
+	const iconLine = blockFileArray.find((line) =>
+		line.includes("@wordpress/icons"),
+	);
 	// get first word after the opening curly brace in iconLine
-	const iconTerm = undefined !== iconLine ? iconLine.split('{ ')[1] : null;
+	const iconTerm = undefined !== iconLine ? iconLine.split("{ ")[1] : null;
 	// remove everything after the first space in iconTerm
-	const icon = null !== iconTerm ? iconTerm.split(' ')[0] : null;
+	const icon = null !== iconTerm ? iconTerm.split(" ")[0] : null;
 	// if the block is navigation link console log the iconLine
 
 	return icon;
 }
 
 exports.handler = async function (event, context) {
-	const blockInfo = await getBlockInfo(
-		"node_modules/@wordpress/block-library/src/",
-		{ exclude: ["block/block.json", "missing/block.json"] },
-	);
+	const blockInfo = getBlockInfo("node_modules/@wordpress/block-library/src/", {
+		exclude: ["block/block.json", "missing/block.json"],
+	});
 
 	// iterate through the blockInfo object and add the block icon to the object from the index.js file in the block folder
 	for (const [key, value] of Object.entries(blockInfo)) {
 		const blockName = key;
 		// if the icon is not already set get the icon
 		if (!blockInfo[blockName].block.icon) {
-			const blockIcon = await getBlockIcon(blockName);
+			const blockIcon = getBlockIcon(blockName);
 			blockInfo[blockName].block.icon = blockIcon;
 		}
 		// console.log(blockIcon);

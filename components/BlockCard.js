@@ -20,6 +20,11 @@ export default function BlockCard(props) {
 	const title = block.title;
 	const category = block.category;
 	const description = block.description;
+	const isExperimental = block["__experimental"];
+	// if blockName has deprecated in it, create a boolean true const
+	const isDeprecated = block.title.includes("(deprecated)");
+	// remove (deprecated) from title
+	const titleWithoutDeprecated = block.title.replace("(deprecated)", "").trim();
 
 	return (
 		<>
@@ -29,12 +34,17 @@ export default function BlockCard(props) {
 				<header>
 					<h3 className="block-reference__title">
 						{icon && <icons.Icon icon={icon} />}{" "}
-						<span className="visually-hidden">Title: </span> {title}
+						<span className="visually-hidden">Title: </span>{" "}
+						{titleWithoutDeprecated}
 					</h3>
 
 					<div className="block-reference__category">
 						<span className="visually-hidden">Category: </span>
 						<span>{category}</span>
+						{isExperimental && (
+							<span className="experimental">experimental</span>
+						)}
+						{isDeprecated && <span className="deprecated">deprecated</span>}
 					</div>
 					<p className="block-reference__description">{description}</p>
 				</header>

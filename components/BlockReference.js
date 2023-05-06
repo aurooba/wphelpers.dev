@@ -71,6 +71,7 @@ export default function BlockReference(props) {
 									scroll: false,
 								});
 							}}>
+							<span className="visually-hidden">Close</span>
 							<icons.Icon icon={icons.close} />
 						</button>
 					</div>

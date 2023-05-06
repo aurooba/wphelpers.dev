@@ -20,7 +20,7 @@ export default function BlockCard(props) {
 	const title = block.title;
 	const category = block.category;
 	const description = block.description;
-	const isExperimental = block["__experimental"];
+	const isExperimental = true === block["__experimental"];
 	// if blockName has deprecated in it, create a boolean true const
 	const isDeprecated = block.title.includes("(deprecated)");
 	// remove (deprecated) from title

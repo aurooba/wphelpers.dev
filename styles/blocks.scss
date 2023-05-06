@@ -76,9 +76,16 @@
 				border: 1px solid rgba(46, 162, 204, 0.5);
 			}
 		}
+		&.block-reference--closed {
+			display: none;
+		}
 		&.block-reference--open {
+			display: block;
 			background-color: var(--light);
 			grid-column: 1 / -1;
+			header {
+				margin-bottom: 1.5rem;
+			}
 			.block-reference {
 				&__category {
 					span {

@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@netlify/functions": "^1.4.0",
-    "@wordpress/icons": "^9.23.0",
+    "@wordpress/icons": "*",
     "eslint-config-next": "^13.4.1",
     "fathom-client": "^3.5.0",
     "next": "^13.4.1",
@@ -21,8 +21,7 @@
     "sass": "^1.49.9"
   },
   "devDependencies": {
-    "@wordpress/block-library": "^8.3.0",
-    "@wordpress/icons": "^9.23.0",
+    "@wordpress/block-library": "*",
     "fs-extra": "^11.1.0",
     "glob": "^8.1.0",
     "lodash.set": "^4.3.2"

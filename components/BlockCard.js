@@ -58,8 +58,8 @@ export default function BlockCard(props) {
 							)
 						}>
 						{blockName === showBlockProps
-							? "Hide Properties"
-							: "Show Properties"}
+							? "Hide Information"
+							: "Expand Information"}
 					</button>
 				</div>
 			</div>

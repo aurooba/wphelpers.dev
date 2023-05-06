@@ -97,7 +97,12 @@ export default function Blocks() {
 					</p>
 					<p className="smaller-paragraph">
 						Note: All the information is pulled from the latest stable release
-						of <a href="https://github.com/WordPress/gutenberg">Gutenberg</a>.
+						of <a href="https://github.com/WordPress/gutenberg">Gutenberg</a>
+						package{" "}
+						<a href="https://www.npmjs.com/package/@wordpress/block-library">
+							@wordpress/block-library
+						</a>
+						.
 					</p>
 				</header>
 				<div className="search-bar">

@@ -19,34 +19,45 @@ export default function IconCard({icon}) {
 
 
 	return (
-		<div className="icon-card">
-			<icons.Icon icon={ icons[icon] } size={64} />
+		<div id="icon-card" className="icon-card">
+			<icons.Icon icon={icons[icon]} size={64} />
 
-			<button onClick={() => { handleCopyClick(icon)}} className="no-border">
+			<button
+				onClick={() => {
+					handleCopyClick(icon);
+				}}
+				className="no-border">
 				<span className="visually-hidden">Click to copy</span>
 				<h2>{icon}</h2>
-				<icons.Icon icon={ icons["copy"] } size={24}/> 
+				<icons.Icon icon={icons["copy"]} size={24} />
 			</button>
-			
-			
-			<button onClick={() => { handleCopyClick(importText)}}>
+
+			<button
+				onClick={() => {
+					handleCopyClick(importText);
+				}}>
 				<span className="visually-hidden">Click to copy</span>
 				<pre>{importText}</pre>
-				<icons.Icon icon={ icons["copy"] } size={24}/>
+				<icons.Icon icon={icons["copy"]} size={24} />
 			</button>
-			<button onClick={() => { handleCopyClick(iconText)}}>
+			<button
+				onClick={() => {
+					handleCopyClick(iconText);
+				}}>
 				<span className="visually-hidden">Click to copy</span>
 				<pre>{iconText}</pre>
-				<icons.Icon icon={ icons["copy"] } size={24}/>
+				<icons.Icon icon={icons["copy"]} size={24} />
 			</button>
-			<button onClick={() => { handleCopyClick(renderToStaticMarkup(icons[icon]))}}>
+			<button
+				onClick={() => {
+					handleCopyClick(renderToStaticMarkup(icons[icon]));
+				}}>
 				<span className="visually-hidden">Click to copy</span>
 				<pre>{renderToStaticMarkup(icons[icon])}</pre>
-				<icons.Icon icon={ icons["copy"] } size={24}/>
+				<icons.Icon icon={icons["copy"]} size={24} />
 			</button>
-			
 
 			{isCopied && <span className="copied">Copied!</span>}
 		</div>
-	)
+	);
 }

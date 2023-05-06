@@ -10,8 +10,10 @@ import Link from "next/link";
 
 export default function HomeLink() {
 	return (
-		<Link href="/" className="home-link" target="_blank">
-			<Icon icon={chevronLeftSmall} /> Home
-		</Link>
+		<div className="home-link">
+			<Link href="/">
+				<Icon icon={chevronLeftSmall} /> Home
+			</Link>
+		</div>
 	);
 }

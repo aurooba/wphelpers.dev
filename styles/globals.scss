@@ -110,5 +110,15 @@ main {
 	white-space: nowrap;
 }
 
+.home-link {
+	font-size: var(--step--4);
+	display: flex;
+	align-items: center;
+	max-width: 1200px;
+	padding: 1rem 1rem 0 1rem;
+	width: 100%;
+	margin: 0 auto;
+}
+
 @import "_icons";
 @import "blocks.scss";

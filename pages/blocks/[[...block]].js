@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import Footer from "@components/Footer";
 import BlockCard from "@components/BlockCard";
 import HomeLink from "@components/HomeLink";
+import SkipLink from "@components/SkipLink";
 
 export default function Blocks() {
 	const router = useRouter();
@@ -64,6 +65,7 @@ export default function Blocks() {
 
 	return (
 		<div className="blocks-reference-page">
+			<SkipLink href="#block-reference-grid" />
 			<NextSeo
 				title="WordPress Core Blocks Explorer"
 				description="A searchable explorer to the all the WordPress core blocks and their properties."
@@ -87,7 +89,6 @@ export default function Blocks() {
 					cardType: "summary_large_image",
 				}}
 			/>
-
 			<main>
 				<HomeLink />
 				<header className="blocks-header">
@@ -124,7 +125,7 @@ export default function Blocks() {
 				{Object.keys(blocksObject).length === 0 && (
 					<div className="loading-blocks">Loading blocks...</div>
 				)}
-				<div className="blocks-reference-grid">
+				<div id="block-reference-grid" className="blocks-reference-grid">
 					{Object.keys(blocksObject)
 						.filter((block) => {
 							return "" !== search ? filterBlocksBySearch(block) : true;
@@ -142,7 +143,6 @@ export default function Blocks() {
 						})}
 				</div>
 			</main>
-
 			<Footer />
 		</div>
 	);

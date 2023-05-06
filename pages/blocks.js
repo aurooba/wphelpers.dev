@@ -85,7 +85,13 @@ export default function Blocks() {
 				<HomeLink />
 				<header className="blocks-header">
 					<h1>WordPress Core Blocks Explorer</h1>
-					<p>Explore all the WordPress core blocks and their properties.</p>
+					<p className="smaller-paragraph">
+						Explore all the WordPress core blocks and their properties.
+					</p>
+					<p className="smaller-paragraph">
+						Note: All the information is pulled from the latest stable release
+						of <a href="https://github.com/WordPress/gutenberg">Gutenberg</a>.
+					</p>
 				</header>
 				<div className="search-bar">
 					<input

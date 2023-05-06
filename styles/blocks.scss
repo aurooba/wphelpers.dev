@@ -60,10 +60,10 @@
 					padding: 0.2rem;
 					border-radius: 5px;
 					&.experimental {
-						background-color: #D2E18E;
+						background-color: var(--secondary);
 					}
 					&.deprecated {
-						background-color: #FCBE73;
+						background-color: var(--alert);
 					}
 				}
 			}

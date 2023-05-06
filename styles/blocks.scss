@@ -15,6 +15,7 @@
 	word-break: break-word;
 	[class^="block-reference-"] {
 		padding: 1rem;
+		background-color: var(--white);
 		border: 1px solid var(--light);
 		box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
 		word-wrap: break-word;
@@ -106,7 +107,7 @@
 		}
 		&.block-reference--open {
 			display: block;
-			background-color: var(--light);
+			// background-color: var(--light);
 			grid-column: 1 / -1;
 			header {
 				margin-bottom: 1.5rem;
@@ -128,6 +129,7 @@
 }
 
 .blocks-reference-page {
+	background-color: var(--background);
 	.search-bar {
 		padding: 0rem 1rem 1rem 1rem;
 		max-width: 1200px;
@@ -138,18 +140,19 @@
 		gap: 1rem;
 	}
 	.search-input {
-		padding: 0.75rem;
-		width: 100%;
-		font-size: var(--step--3);
 		transition: 0.2s ease all;
+		width: 100%;
 		border: 1px solid var(--light);
-		outline: 1px auto var(--light);
+		outline: 1px solid var(--light);
+		padding: 1rem;
+		font-size: var(--step--2);
+		&:focus{
+			outline: 1px solid var(--highlight);
+			border: 1px solid var(--highlight);
+		}
 		&:-webkit-search-cancel-button {
 			display: none;
 			appearance: none;
-		}
-		&:focus {
-			outline: 1px auto var(--highlight);
 		}
 	}
 	.blocks-found-quantity {

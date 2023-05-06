@@ -40,6 +40,13 @@ export default function BlockReference(props) {
 	const PropertyReference = dynamic(() => import("./JsonView.js"), {
 		ssr: false,
 	});
+
+	function closeOpenBlockReference() {
+		setShowBlockProps(false);
+		router.push(`/blocks`, "", {
+			scroll: false,
+		});
+	}
 	useEffect(() => {
 		if (blockName === showBlockProps) {
 			if (null !== scrollToRef.current) {
@@ -50,6 +57,21 @@ export default function BlockReference(props) {
 			}
 		}
 	}, [showBlockProps]);
+
+	useEffect(() => {
+		const keyDownHandler = (event) => {
+			console.log("User pressed: ", event.key);
+
+			if (event.key === "Escape") {
+				event.preventDefault();
+				closeOpenBlockReference();
+			}
+		};
+		document.addEventListener("keydown", keyDownHandler);
+		return () => {
+			document.removeEventListener("keydown", keyDownHandler);
+		};
+	}, []);
 
 	return (
 		<>
@@ -64,13 +86,7 @@ export default function BlockReference(props) {
 				ref={scrollToRef}>
 				<header>
 					<div className="block-reference__close">
-						<button
-							onClick={() => {
-								setShowBlockProps(false);
-								router.push(`/blocks`, "", {
-									scroll: false,
-								});
-							}}>
+						<button onClick={closeOpenBlockReference}>
 							<span className="visually-hidden">Close</span>
 							<icons.Icon icon={icons.close} />
 						</button>

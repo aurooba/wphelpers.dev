@@ -57,9 +57,16 @@ export default function BlockCard(props) {
 							setShowBlockProps(
 								blockName === showBlockProps ? false : blockName,
 							);
-							router.push(`/blocks/${encodeURIComponent(blockName)}`, "", {
-								scroll: false,
-							});
+							if (blockName === showBlockProps) {
+								router.push(`/blocks`, "", {
+									scroll: false,
+								});
+							} else {
+								router.push(`/blocks/${encodeURIComponent(blockName)}`, "", {
+									scroll: false,
+								});
+							}
+
 						}}>
 						{blockName === showBlockProps
 							? "Hide Information"

@@ -2,9 +2,8 @@
  * External Dependencies
  */
 import * as icons from "@wordpress/icons";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import ky from "ky-universal";
 
 /**
  * Internal Dependencies
@@ -27,6 +26,7 @@ export default function BlockReference(props) {
 	const description = block.description;
 	const isDeprecated = block.title.includes("(deprecated)");
 	const scrollToRef = useRef(null);
+	const [documentationUrl, setDocumentationUrl] = useState(false);
 	// create an object of all the properties of blockObject except icon, title, category and description
 	const properties = Object.keys(block).reduce((object, key) => {
 		if (
@@ -73,20 +73,21 @@ export default function BlockReference(props) {
 		};
 	}, []);
 
-	const urlExist = async (url) => {
-		if (typeof url !== "string") {
-			throw new TypeError(`Expected a string, got ${typeof url}`);
-		}
-
-		const response = await ky.head(url, {
-			throwHttpErrors: false,
-		});
-
-		return (
-			response !== undefined &&
-			(response.status < 400 || response.status >= 500)
-		);
-	};
+	useEffect(() => {
+		const url = `https://wordpress.org/documentation/article/${blockName}-block/`;
+		fetch("/api/urlExist?url=" + url)
+			.then(async (response) => response.json())
+			.then((response) => {
+				if (response === 200) {
+					setDocumentationUrl(true);
+				} else {
+					setDocumentationUrl(false);
+				}
+			})
+			.catch((error) => {
+				console.log("error: " + error);
+			});
+	}, []);
 
 	return (
 		<>
@@ -131,9 +132,7 @@ export default function BlockReference(props) {
 							</a>
 						</p>
 					)}
-					{urlExist(
-						`https://wordpress.org/documentation/article/${blockName}-block/`,
-					) && (
+					{documentationUrl && (
 						<p className="block-reference__source">
 							<a
 								href={`https://wordpress.org/documentation/article/${blockName}-block/`}>

@@ -4,6 +4,7 @@
 import * as icons from "@wordpress/icons";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import ky from "ky-universal";
 
 /**
  * Internal Dependencies
@@ -24,6 +25,7 @@ export default function BlockReference(props) {
 	const title = block.title;
 	const category = block.category;
 	const description = block.description;
+	const isDeprecated = block.title.includes("(deprecated)");
 	const scrollToRef = useRef(null);
 	// create an object of all the properties of blockObject except icon, title, category and description
 	const properties = Object.keys(block).reduce((object, key) => {
@@ -60,8 +62,6 @@ export default function BlockReference(props) {
 
 	useEffect(() => {
 		const keyDownHandler = (event) => {
-			console.log("User pressed: ", event.key);
-
 			if (event.key === "Escape") {
 				event.preventDefault();
 				closeOpenBlockReference();
@@ -72,6 +72,21 @@ export default function BlockReference(props) {
 			document.removeEventListener("keydown", keyDownHandler);
 		};
 	}, []);
+
+	const urlExist = async (url) => {
+		if (typeof url !== "string") {
+			throw new TypeError(`Expected a string, got ${typeof url}`);
+		}
+
+		const response = await ky.head(url, {
+			throwHttpErrors: false,
+		});
+
+		return (
+			response !== undefined &&
+			(response.status < 400 || response.status >= 500)
+		);
+	};
 
 	return (
 		<>
@@ -106,13 +121,28 @@ export default function BlockReference(props) {
 					<div className="block-reference__properties">
 						{<PropertyReference data={properties} />}
 					</div>
-					<p className="block-reference__source">
-						<a
-							href={`https://github.com/WordPress/gutenberg/tree/trunk/packages/block-library/src/${blockName}`}>
-							<GitHub />
-							Block source code on GitHub
-						</a>
-					</p>
+					{!isDeprecated && (
+						<p className="block-reference__source">
+							<a
+								href={`https://github.com/WordPress/gutenberg/tree/trunk/packages/block-library/src/${blockName}`}>
+								<GitHub />
+								Block source code on GitHub
+								<icons.Icon icon={icons.external} />
+							</a>
+						</p>
+					)}
+					{urlExist(
+						`https://wordpress.org/documentation/article/${blockName}-block/`,
+					) && (
+						<p className="block-reference__source">
+							<a
+								href={`https://wordpress.org/documentation/article/${blockName}-block/`}>
+								<icons.Icon icon={icons.wordpress} />
+								Block documentation on WordPress.org
+								<icons.Icon icon={icons.external} />
+							</a>
+						</p>
+					)}
 				</div>
 			</div>
 		</>

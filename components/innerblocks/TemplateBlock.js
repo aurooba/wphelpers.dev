@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import BlockAttribute from "./BlockAttribute";
 import Repeater from "../Repeater";
 
-export default function TemplateBlock() {
-	const [blocksObject, setBlocksObject] = useState({});
+export default function TemplateBlock(props) {
+	const { blocksObject } = props;
 	const [selectedBlock, setSelectedBlock] = useState(false);
 
 	// get the attributes of the selectedBlock from the blocksObject
@@ -11,16 +11,6 @@ export default function TemplateBlock() {
 		? blocksObject[selectedBlock]["block"].attributes
 		: false;
 
-	useEffect(() => {
-		fetch("/api/core-blocks")
-			.then(async (response) => response.json())
-			.then((response) => {
-				setBlocksObject(response);
-			})
-			.catch((error) => {
-				console.log("error: " + error);
-			});
-	}, []);
 	// create an options array from the blocksObject with the block names as the values and name as labels
 	const options = Object.keys(blocksObject).map((blockName) => {
 		return {

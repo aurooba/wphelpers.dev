@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NextSeo } from "next-seo";
 /**
  * Internal Dependencies
@@ -10,6 +10,18 @@ import Footer from "@components/Footer";
 import InnerBlocksGenerator from "@components/innerblocks/InnerBlocksGenerator";
 
 export default function Icons() {
+	const [blocksObject, setBlocksObject] = useState({});
+	useEffect(() => {
+		fetch("/api/core-blocks")
+			.then(async (response) => response.json())
+			.then((response) => {
+				setBlocksObject(response);
+			})
+			.catch((error) => {
+				console.log("error: " + error);
+			});
+	}, []);
+
 	return (
 		<div className="page">
 			<NextSeo
@@ -40,7 +52,9 @@ export default function Icons() {
 					<h1>WordPress InnerBlocks Template Generator</h1>
 					<p>Generate InnerBlocks templates in JSX or PHP.</p>
 				</header>
-				<InnerBlocksGenerator />
+				{Object.keys(blocksObject).length !== 0 && (
+					<InnerBlocksGenerator blocksObject={blocksObject} />
+				)}
 			</main>
 
 			<Footer />

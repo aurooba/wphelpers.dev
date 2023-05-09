@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TemplateBlock from "./TemplateBlock";
 import Repeater from "../Repeater";
-export default function InnerBlocksGenerator() {
+export default function InnerBlocksGenerator({ blocksObject }) {
 	const [templateType, setTemplateType] = useState("php");
 
 	return (
@@ -32,7 +32,7 @@ export default function InnerBlocksGenerator() {
 					</div>
 				</div>
 				<Repeater title="Block">
-					<TemplateBlock />
+					<TemplateBlock blocksObject={blocksObject} />
 				</Repeater>
 			</div>
 		</>

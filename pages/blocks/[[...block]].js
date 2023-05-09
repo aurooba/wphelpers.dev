@@ -60,12 +60,9 @@ export default function Blocks() {
 	}, [search, blocksObject]);
 	function handleSearch(event) {
 		setSearch(event.target.value);
-		let query = {};
+		let query = { ...router.query, s: event.target.value };
 		if ("" === event.target.value) {
-			query = { ...router.query };
 			delete query.s;
-		} else {
-			query = { ...router.query, s: event.target.value };
 		}
 
 		router.push(

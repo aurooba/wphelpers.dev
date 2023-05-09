@@ -15,9 +15,12 @@ import SkipLink from "@components/SkipLink";
 
 export default function Blocks() {
 	const router = useRouter();
-	const { block: setBlock } = router.query;
+	const { block: setBlock, s: searchQuery } = router.query;
+	console.log(searchQuery);
 	const [blocksObject, setBlocksObject] = useState({});
-	const [search, setSearch] = useState("");
+	const [search, setSearch] = useState(
+		"" !== searchQuery && undefined !== searchQuery ? searchQuery : "",
+	);
 	const [blocksFound, setBlocksFound] = useState(blocksObject.length);
 	const [showBlockProps, setShowBlockProps] = useState(
 		undefined !== setBlock ? setBlock[0] : false,
@@ -43,6 +46,12 @@ export default function Blocks() {
 	}, [setBlock]);
 
 	useEffect(() => {
+		setSearch(
+			"" !== searchQuery && undefined !== searchQuery ? searchQuery : "",
+		);
+	}, [searchQuery]);
+
+	useEffect(() => {
 		setBlocksFound(
 			Object.keys(blocksObject).filter((block) => {
 				return "" !== search ? filterBlocksBySearch(block) : true;
@@ -51,6 +60,24 @@ export default function Blocks() {
 	}, [search, blocksObject]);
 	function handleSearch(event) {
 		setSearch(event.target.value);
+		let query = {};
+		if ("" === event.target.value) {
+			query = { ...router.query };
+			delete query.s;
+		} else {
+			query = { ...router.query, s: event.target.value };
+		}
+
+		router.push(
+			{
+				query,
+			},
+			undefined,
+			{
+				...router.options,
+				shallow: true,
+			},
+		);
 	}
 	useEffect(() => {
 		fetch("/api/core-blocks")

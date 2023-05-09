@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
  */
 import dynamic from "next/dynamic";
 import { GitHub } from "./icons/github.js";
+import BlockUserDocumentation from "./BlockUserDocumentation.js";
 
 export default function BlockReference(props) {
 	const {
@@ -73,22 +74,6 @@ export default function BlockReference(props) {
 		};
 	}, []);
 
-	useEffect(() => {
-		const url = `https://wordpress.org/documentation/article/${blockName}-block/`;
-		fetch("/api/urlExist?url=" + url)
-			.then(async (response) => response.json())
-			.then((response) => {
-				if (response === 200) {
-					setDocumentationUrl(true);
-				} else {
-					setDocumentationUrl(false);
-				}
-			})
-			.catch((error) => {
-				console.log("error: " + error);
-			});
-	}, []);
-
 	return (
 		<>
 			<div
@@ -132,16 +117,7 @@ export default function BlockReference(props) {
 							</a>
 						</p>
 					)}
-					{documentationUrl && (
-						<p className="block-reference__source">
-							<a
-								href={`https://wordpress.org/documentation/article/${blockName}-block/`}>
-								<icons.Icon icon={icons.wordpress} />
-								Block documentation on WordPress.org
-								<icons.Icon icon={icons.external} />
-							</a>
-						</p>
-					)}
+					<BlockUserDocumentation blockName={blockName} />
 				</div>
 			</div>
 		</>

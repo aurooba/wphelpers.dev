@@ -16,7 +16,6 @@ import SkipLink from "@components/SkipLink";
 export default function Blocks() {
 	const router = useRouter();
 	const { block: setBlock, s: searchQuery } = router.query;
-	console.log(searchQuery);
 	const [blocksObject, setBlocksObject] = useState({});
 	const [search, setSearch] = useState(
 		"" !== searchQuery && undefined !== searchQuery ? searchQuery : "",

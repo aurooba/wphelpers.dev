@@ -16,7 +16,7 @@ export default function IconGrid({ icon="wordpress"}) {
 
 				<div className="icons-meta">
 					<h1>WordPress Icons Library.</h1>
-					<p>A searchable guide to the complete <a href="https://github.com/WordPress/gutenberg/tree/trunk/packages/icons" target="_blank">WordPress Icon Library</a> package from Gutenberg.</p>
+					<p>A searchable guide to the complete <a href="https://github.com/WordPress/gutenberg/tree/trunk/packages/icons" target="_blank">WordPress Icon Library (@wordpress/icons)</a> package from Gutenberg.</p>
 					
 					<input type="text" placeholder="Search" value={search} onChange={handleSearch} />
 				</div>

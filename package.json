@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@netlify/functions": "^1.4.0",
-    "@wordpress/icons": "^9.23.0",
+    "@wordpress/icons": "*",
     "fathom-client": "^3.5.0",
     "next": "^12.3.4",
     "next-seo": "^6.0.0",

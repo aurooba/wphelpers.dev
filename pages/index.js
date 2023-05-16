@@ -75,6 +75,10 @@ export default function Home() {
 							<a href="/icons">WordPress Icon Library</a> package from
 							Gutenberg.
 						</p>
+						<h2 className="smaller-paragraph">WordPress Audit Checklist</h2>
+						<p className="smaller-paragraph">
+							A <a href="https://wpaudit.site">helpful checklist to audit your website</a> for formatting, WordPress specific optimization, accessibility, performance, and security.
+						</p>
 					</section>
 				</main>
 

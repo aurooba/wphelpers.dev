@@ -77,7 +77,7 @@ export default function Home() {
 						</p>
 						<h2 className="smaller-paragraph">WordPress Audit Checklist</h2>
 						<p className="smaller-paragraph">
-							A <a href="https://wpaudit.site">helpful checklist to audit your website</a> for formatting, WordPress specific optimization, accessibility, performance, and security.
+							A <a href="https://wpaudit.site/?utm_campaign=wphelpers.dev&utm_source=wphelpers.dev&utm_medium=textlink">helpful checklist to audit your website</a> for formatting, WordPress specific optimization, accessibility, performance, and security.
 						</p>
 					</section>
 				</main>

@@ -93,6 +93,7 @@ export default function BlockCard(props) {
 									},
 								);
 							} else {
+								Fathom.trackGoal("V1UXBPVW", 0);
 								router.push(
 									{
 										pathname: `/blocks/${encodeURIComponent(blockName)}`,

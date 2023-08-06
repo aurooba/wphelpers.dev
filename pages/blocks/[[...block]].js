@@ -91,7 +91,7 @@ export default function Blocks() {
 			<SkipLink href="#block-reference-grid" />
 			<NextSeo
 				title="WordPress Core Blocks Explorer"
-				description="A searchable explorer to the all the WordPress core blocks and their properties."
+				description="A searchable explorer to all the WordPress core blocks and their properties."
 				openGraph={{
 					url: "https://wphelpers.dev/blocks",
 					title: "WordPress Core Blocks Explorer",

@@ -17,6 +17,7 @@ export default function BlockCard(props) {
 		setShowBlockProps,
 	} = props;
 	const router = useRouter();
+	const { block: setBlock, s: searchQuery } = router.query;
 	const blockIcon = block.icon;
 	const icon = icons[blockIcon];
 	const category = block.category;
@@ -58,15 +59,25 @@ export default function BlockCard(props) {
 								blockName === showBlockProps ? false : blockName,
 							);
 							if (blockName === showBlockProps) {
-								router.push(`/blocks`, "", {
-									scroll: false,
-								});
+								router.push(
+									{ pathname: `/blocks`, query: { s: searchQuery } },
+									"",
+									{
+										scroll: false,
+									},
+								);
 							} else {
-								router.push(`/blocks/${encodeURIComponent(blockName)}`, "", {
-									scroll: false,
-								});
+								router.push(
+									{
+										pathname: `/blocks/${encodeURIComponent(blockName)}`,
+										query: { s: searchQuery },
+									},
+									"",
+									{
+										scroll: false,
+									},
+								);
 							}
-
 						}}>
 						{blockName === showBlockProps
 							? "Hide Information"

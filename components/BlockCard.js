@@ -4,6 +4,7 @@
 import * as icons from "@wordpress/icons";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import * as Fathom from "fathom-client";
 
 /**
  * Internal dependencies

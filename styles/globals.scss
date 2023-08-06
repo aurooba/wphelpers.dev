@@ -79,6 +79,10 @@ main {
 	justify-content: center;
 	align-items: center;
 	font-size: var(--step--5);
+	flex-direction: column;
+	p {
+		margin-bottom: 0;
+	}
 }
 
 .smaller-paragraph {

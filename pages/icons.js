@@ -8,6 +8,8 @@ import { NextSeo } from "next-seo";
  */
 import Footer from "@components/Footer";
 import IconGrid from "@components/IconGrid";
+import HomeLink from "@components/HomeLink";
+import SkipLink from "@components/SkipLink";
 
 export default function Icons() {
 	return (
@@ -35,8 +37,10 @@ export default function Icons() {
 					cardType: "summary_large_image",
 				}}
 			/>
+			<SkipLink href="#icon-card" />
 			<div className="container">
 				<main>
+					<HomeLink />
 					<IconGrid />
 				</main>
 

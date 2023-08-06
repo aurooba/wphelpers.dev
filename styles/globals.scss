@@ -1,5 +1,3 @@
-
-
 :root {
 	--step--5: clamp(0.49rem, calc(0.54rem + -0.07vw), 0.53rem);
 	--step--4: clamp(0.63rem, calc(0.64rem + -0.04vw), 0.61rem);
@@ -18,6 +16,8 @@
 	--text: #464646;
 	--white: #ffffff;
 	--light: #e5e5e5;
+	--secondary: #D2E18E;
+	--alert: #FCBE73;
 	--highlight: #2ea2cc;
 	--body-font: Georgia, serif;
 }
@@ -113,3 +113,6 @@ main {
 }
 
 @import "_icons";
+@import "blocks";
+@import "home-link";
+@import "skip-link";

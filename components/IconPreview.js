@@ -14,8 +14,8 @@ export default function IconPreview({icon, name}) {
 	});
 	return (
 		<div className="icon-card">
-			<Link href={`/icons/${encodeURIComponent(icon)}`} passHref>
-				<IconComponent />
+			<Link href={`/icons/${encodeURIComponent(icon)}`}>
+				<icons.Icon icon={name} size={64} />
 			</Link>
 			<span>
 				<Link href={`/icons/${encodeURIComponent(icon)}`}>{icon}</Link>

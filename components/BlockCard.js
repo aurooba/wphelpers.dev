@@ -30,7 +30,7 @@ export default function BlockCard(props) {
 	const titleWithoutDeprecated = block.title.replace("(deprecated)", "").trim();
 	const [isCopied, setIsCopied] = useState(false);
 	async function handleCopyClick(text) {
-		// Fathom.trackGoal("QQWKGXO3", 0);
+		Fathom.trackGoal("XTIKO2BV", 0);
 		setIsCopied(true);
 		setTimeout(() => {
 			setIsCopied(false);

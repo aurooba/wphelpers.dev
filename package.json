@@ -23,7 +23,7 @@
     "sass": "^1.49.9"
   },
   "devDependencies": {
-    "@wordpress/block-library": "*",
+    "@wordpress/block-library": "^8.15.0",
     "fs-extra": "^11.1.0",
     "glob": "^8.1.0",
     "lodash.set": "^4.3.2"

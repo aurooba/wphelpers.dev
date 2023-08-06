@@ -35,11 +35,16 @@ export default function BlockCard(props) {
 				key={"block-reference-" + block.name}>
 				<header>
 					<h3 className="block-reference__title">
-						{icon && <icons.Icon icon={icon} />}{" "}
-						<span className="visually-hidden">Title: </span>{" "}
-						{titleWithoutDeprecated}
+						{icon && <icons.Icon icon={icon} />}
+						<div className="block-reference__title-wrapper">
+							<span className="visually-hidden">Title: </span>
+							{titleWithoutDeprecated}
+							<pre>
+								<span className="visually-hidden">Slug: </span>
+								{block.name}
+							</pre>
+						</div>
 					</h3>
-
 					<div className="block-reference__category">
 						<span className="visually-hidden">Category: </span>
 						<span>{category}</span>

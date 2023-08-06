@@ -79,6 +79,16 @@
 					height: 24px;
 				}
 			}
+			&__title-wrapper {
+				pre {
+					font-size: var(--step--4);
+					font-weight: normal;
+					margin-top: 0.2rem;
+					margin-bottom: 0;
+				}
+
+
+			}
 		}
 		&:not(.block-reference--closed):not(.block-reference--open) {
 			.block-reference {

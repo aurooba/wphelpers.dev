@@ -55,7 +55,7 @@ export default function BlockCard(props) {
 									}}
 									className="no-border copy-button">
 									<span className="visually-hidden">Slug: </span>
-									{block.name}
+									<span class="block-slug">{block.name}</span>
 
 									<span className="visually-hidden">Click to copy</span>
 									<icons.Icon

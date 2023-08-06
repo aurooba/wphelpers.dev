@@ -38,6 +38,7 @@
 					display: flex;
 					gap: 0.5rem;
 					flex-direction: column;
+					word-break: break-word;
 					@media (min-width: 600px) {
 						flex-direction: row;
 					}
@@ -86,7 +87,10 @@
 					margin-top: 0.2rem;
 					margin-bottom: 0;
 				}
-
+				.block-slug {
+					text-wrap: balance;
+					text-align: left;
+				}
 
 			}
 		}

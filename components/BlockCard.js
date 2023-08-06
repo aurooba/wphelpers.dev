@@ -3,6 +3,7 @@
  */
 import * as icons from "@wordpress/icons";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 /**
  * Internal dependencies
@@ -27,7 +28,15 @@ export default function BlockCard(props) {
 	const isDeprecated = block.title.includes("(deprecated)");
 	// remove (deprecated) from title
 	const titleWithoutDeprecated = block.title.replace("(deprecated)", "").trim();
-
+	const [isCopied, setIsCopied] = useState(false);
+	async function handleCopyClick(text) {
+		// Fathom.trackGoal("QQWKGXO3", 0);
+		setIsCopied(true);
+		setTimeout(() => {
+			setIsCopied(false);
+		}, 1500);
+		return await navigator.clipboard.writeText(text);
+	}
 	return (
 		<>
 			<div
@@ -40,8 +49,20 @@ export default function BlockCard(props) {
 							<span className="visually-hidden">Title: </span>
 							{titleWithoutDeprecated}
 							<pre>
-								<span className="visually-hidden">Slug: </span>
-								{block.name}
+								<button
+									onClick={() => {
+										handleCopyClick(block.name);
+									}}
+									className="no-border copy-button">
+									<span className="visually-hidden">Slug: </span>
+									{block.name}
+
+									<span className="visually-hidden">Click to copy</span>
+									<icons.Icon
+										icon={isCopied ? icons["check"] : icons["copy"]}
+										size={16}
+									/>
+								</button>
 							</pre>
 						</div>
 					</h3>

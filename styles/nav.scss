@@ -1,0 +1,37 @@
+.home-link {
+	display: flex;
+	a {
+		font-size: var(--step--4);
+		display: inline-flex;
+		align-items: center;
+	}
+}
+.main-header {
+	nav {
+		display: flex;
+		max-width: 1200px;
+		padding: 1rem 1rem 0 1rem;
+		width: 100%;
+		margin: 0 auto;
+		gap: 1rem;
+		a {
+			font-size: var(--step--4);
+			display: inline-flex;
+			align-items: center;
+			padding: 0.2rem 0.5rem;
+			border: 1px solid transparent;
+			transition: 0.5s ease all;
+			text-decoration: none;
+			&:hover {
+				border-radius: 5px;
+				border: 1px solid var(--highlight);
+
+			}
+			&.current-page {
+				border-radius: 5px;
+				border: 1px solid var(--highlight);
+				text-decoration: none;
+			}
+		}
+	}
+}

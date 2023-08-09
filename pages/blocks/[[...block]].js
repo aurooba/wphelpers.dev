@@ -10,8 +10,8 @@ import { useRouter } from "next/router";
  */
 import Footer from "@components/Footer";
 import BlockCard from "@components/BlockCard";
-import HomeLink from "@components/HomeLink";
 import SkipLink from "@components/SkipLink";
+import Header from "@components/Header";
 
 export default function Blocks() {
 	const router = useRouter();
@@ -113,7 +113,7 @@ export default function Blocks() {
 				}}
 			/>
 			<main>
-				<HomeLink />
+				<Header />
 				<header className="blocks-header">
 					<h1>WordPress Core Blocks Explorer</h1>
 					<p className="smaller-paragraph">

@@ -5,7 +5,6 @@ export default function Footer() {
 	const router = useRouter();
 	// get current path
 	const path = router.pathname;
-	console.log(path);
 	const nav = [
 		{
 			href: "/blocks",

@@ -1,11 +1,3 @@
-.home-link {
-	display: flex;
-	a {
-		font-size: var(--step--4);
-		display: inline-flex;
-		align-items: center;
-	}
-}
 .main-header {
 	nav {
 		display: flex;
@@ -14,6 +6,7 @@
 		width: 100%;
 		margin: 0 auto;
 		gap: 1rem;
+		flex-wrap: wrap;
 		a {
 			font-size: var(--step--4);
 			display: inline-flex;
@@ -27,10 +20,20 @@
 				border: 1px solid var(--highlight);
 
 			}
+
 			&.current-page {
 				border-radius: 5px;
 				border: 1px solid var(--highlight);
 				text-decoration: none;
+			}
+		}
+		.home-link {
+			display: flex;
+			a {
+				font-size: var(--step--4);
+				display: inline-flex;
+				align-items: center;
+				padding-left: 0;
 			}
 		}
 	}

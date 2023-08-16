@@ -16,6 +16,7 @@ import Header from "@components/Header";
 export default function Blocks() {
 	const router = useRouter();
 	const { block: setBlock, s: searchQuery } = router.query;
+	const [packageVersion, setPackageVersion] = useState("");
 	const [blocksObject, setBlocksObject] = useState({});
 	const [search, setSearch] = useState(
 		"" !== searchQuery && undefined !== searchQuery ? searchQuery : "",
@@ -84,6 +85,11 @@ export default function Blocks() {
 			.catch((error) => {
 				console.log("error: " + error);
 			});
+		fetch("/api/block-library-version")
+			.then(async (response) => response.json())
+			.then((response) => {
+				setPackageVersion(response);
+			});
 	}, []);
 
 	return (
@@ -120,12 +126,11 @@ export default function Blocks() {
 						Explore all the WordPress core blocks and their properties.
 					</p>
 					<p className="smaller-paragraph">
-						Note: All the information is pulled from the latest stable release
-						of the{" "}
+						Note: All the information is pulled from the{" "}
 						<a href="https://github.com/WordPress/gutenberg">Gutenberg</a>{" "}
 						package{" "}
 						<a href="https://www.npmjs.com/package/@wordpress/block-library">
-							@wordpress/block-library
+							@wordpress/block-library version {packageVersion}
 						</a>
 						.
 					</p>

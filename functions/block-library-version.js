@@ -13,7 +13,7 @@ exports.handler = async function (event, context) {
 	// get the version from the package.json file sitting at node_modules/@wordpress/block-library
 	const blockLibraryPath = join("node_modules", "@wordpress", "block-library");
 	const packageJsonPath = join(blockLibraryPath, "package.json");
-	const packageJson = await asyncReadFile(packageJsonPath, "utf8");
+	const packageJson = readFileSync(packageJsonPath);
 	const blockLibraryInfo = JSON.parse(packageJson);
 
 	return {

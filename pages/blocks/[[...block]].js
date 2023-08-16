@@ -85,11 +85,11 @@ export default function Blocks() {
 			.catch((error) => {
 				console.log("error: " + error);
 			});
-		fetch("/api/block-library-version")
-			.then(async (response) => response.json())
-			.then((response) => {
-				setPackageVersion(response);
-			});
+		// fetch("/api/block-library-version")
+		// 	.then(async (response) => response.json())
+		// 	.then((response) => {
+		// 		setPackageVersion(response);
+		// 	});
 	}, []);
 
 	return (

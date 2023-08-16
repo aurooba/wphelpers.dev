@@ -130,7 +130,8 @@ export default function Blocks() {
 						<a href="https://github.com/WordPress/gutenberg">Gutenberg</a>{" "}
 						package{" "}
 						<a href="https://www.npmjs.com/package/@wordpress/block-library">
-							@wordpress/block-library version {packageVersion}
+							@wordpress/block-library{" "}
+							{"" !== packageVersion ? "version " + packageVersion : ""}
 						</a>
 						.
 					</p>

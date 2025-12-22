@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "yarn upgrade @wordpress/icons @wordpress/block-library",
     "build": "next build",
     "export": "next export"
   },
